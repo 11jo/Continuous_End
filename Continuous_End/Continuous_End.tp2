@@ -5,12 +5,15 @@ VERSION ~1.0~
 
 README ~Continuous_End/readme/Continuous_End.txt~
 
+ASK_EVERY_COMPONENT
 
 ALWAYS
 
 	OUTER_SET Continuous_Alora = 0
 
 	OUTER_SET Continuous_Ajantis = 0
+
+	OUTER_SET Continuous_Coran = 0
 
 	OUTER_SET Continuous_Xan = 0
 
@@ -32,6 +35,8 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Ajantis = 1
 
+	OUTER_SET Continuous_Coran = 1
+
 	OUTER_SET Continuous_Xan = 1
 
 		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
@@ -43,6 +48,8 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 		INCLUDE ~Continuous_End/lib/Continuous_Ajantis.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Coran.tph~
 
 
 BEGIN ~Continuous Alora for EET (Install after Alora BG2 mod)~
@@ -97,3 +104,21 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~
+
+
+BEGIN ~Continuous Coran for EET (Install after Ajantis BG2 mod)~
+DESIGNATED 4
+LABEL ~Continuous_Coran_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~CORAN.TP2~ ~0~  ~Coran BG2 need to be installed~
+FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+
+	OUTER_SET Continuous_Coran = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Coran.tph~

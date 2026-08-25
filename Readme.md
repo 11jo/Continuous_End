@@ -24,7 +24,7 @@ This mod will apply changes in game, in order to make several NPCs continuous wi
 
 https://github.com/orgs/The-Gate-Project/discussions/10l
 
-Mod included : Alora bg2, Ajantis bg2, Xan bg2.
+Mod included : Alora bg2, Ajantis bg2, Coran bg2, Xan bg2.
 
 ## Instruction :  
 ----------------
@@ -39,6 +39,8 @@ The mod need to be installed *BEFORE* EET_End and *AFTER* any NPC mods intended 
 - Alora bg2 Component : Install Continuous Alora.
 
 - Ajantis bg2 Component : Install Continuous Ajantis.
+
+- Coran bg2 Component : Install Continuous Coran.
 
 - Xan bg2 Component : Install Continuous Xan.
 
@@ -57,3 +59,11 @@ Follow the prompt
 
 ## Version History :
 --------------------
+
+v1.0: Initial release
+- Alora bg2
+- Ajantis bg2
+- Coran bg2
+- 
+- Xan bg2
+- 
