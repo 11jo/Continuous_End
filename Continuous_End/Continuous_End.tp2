@@ -28,7 +28,9 @@ REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 
 	OUTER_SET Continuous_Ajantis = 1
 
-		INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
 
@@ -38,13 +40,15 @@ DESIGNATED 1
 LABEL ~Continuous_Alora_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~Alora.TP2~ ~0~  ~Alora BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_NPC.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
 
 	OUTER_SET Continuous_Alora = 1
 
-		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
 
-		INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
 
 
 BEGIN ~Continuous Ajantis for EET (Install after Ajantis BG2 mod)~
@@ -52,10 +56,12 @@ DESIGNATED 2
 LABEL ~Continuous_Ajantis_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~  ~Ajantis BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_NPC.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
 
 	OUTER_SET Continuous_Ajantis = 1
 
-		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
 
-		INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~

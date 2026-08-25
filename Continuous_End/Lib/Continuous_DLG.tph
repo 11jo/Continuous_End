@@ -1,0 +1,173 @@
+// Note : // To avoid replacing Action like SCRIPT_NAME or DIALOG_NAME if the DEATH_VAR have similar name.
+	// ChangeAIScript("SCRIPT_NAME",location)
+	// StartDialog("DIALOG_NAME",O:Target*)
+	// SetDialog("DIALOG_NAME")
+	// StartDialogInterrupt("DIALOG_NAME",O:Target*)
+	// StartDialogOverride("DIALOG_NAME",O:Target*,I:Unused*,I:Unused*,I:ConverseAsItem*)
+	// StartDialogOverride("DIALOG_NAME",O:Target*)
+	// StartDialogOverrideInterrupt("DIALOG_NAME",O:Target*)
+	// StartDialogNoName("DIALOG_NAME",O:Target*)
+	// Said(O:Object*,I:Dialog ID*) // Never used ?
+
+
+///////////////////////////////////////////////////////////////////////////////
+//////////// If DEATH_VAR have similar Script or Dialog name //////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+// Replace OLD_DEATH_VAR by the Death_var that need to be changed
+	// Replace SCRIPT_MOD_NAME by SCRIPT_WHATEVER
+		// Replace DIALOG_MOD_NAME by DIALOG_WHATEVER
+			// Replace NEW_DEATH_VAR by the new Death_var for your continuous NPC
+				// Replace MY_MOD by the tp2 name of your mod
+					// Replace MY_COMPONENT by the COMPONENT name of your mod (usually ~0~)
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+			SPRINT textToReplace ~ChangeAIScript("OLD_DEATH_VAR",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_MOD_NAME",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~StartDialog\([^)]*\)("OLD_DEATH_VAR"\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_MOD_NAME",\2)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~SetDialog\([^)]*\)("OLD_DEATH_VAR")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_MOD_NAME")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~~~~~"OLD_DEATH_VAR"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"NEW_DEATH_VAR"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"DIALOG_MOD_NAME"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"SCRIPT_MOD_NAME"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+*/
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////// If DEATH_VAR is unique /////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+// Replace OLD_DEATH_VAR by the Death_var that need to be changed
+	// Replace NEW_DEATH_VAR by the new Death_var for your continuous NPC
+		// Replace MY_MOD by the tp2 name of your mod
+			// Replace MY_COMPONENT by the COMPONENT name of your mod (usually ~0~)
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+			SPRINT textToReplace ~~~~~"OLD_DEATH_VAR"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~MY_COMPONENT~) AND (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"NEW_DEATH_VAR"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+*/
+
+
+//                                    DLG                                           //
+
+	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
+		DECOMPILE_AND_PATCH BEGIN
+	// Alora BG2 START
+	PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+			SPRINT textToReplace ~ChangeAIScript("CMALORA",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_CMALORA",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~StartDialog\([^)]*\)("CMALORA"\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_CMALORA",\2)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~SetDialog\([^)]*\)("CMALORA")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_CMALORA")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~~~~~"CMALORA"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Alora"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"DIALOG_CMALORA"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"SCRIPT_CMALORA"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Alora BG2 END
+	// Ajantis BG2 START
+	PATCH_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~2~) BEGIN
+			SPRINT textToReplace ~~~~~"C#Ajantis"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Ajantis"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Ajantis BG2 END
+///////////////////////////////////////////////////////////////////////////////
+// Add your block or blocks below
+///////////////////////////////////////////////////////////////////////////////
+// NEW MOD BG2 START
+// NEW MOD BG2 END
+		END
+BUT_ONLY

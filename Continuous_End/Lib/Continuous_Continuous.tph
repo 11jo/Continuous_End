@@ -2,7 +2,7 @@
 
 // Alora for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA
@@ -48,7 +48,7 @@ END
 
 // Ajantis for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 2) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 2) BEGIN
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA
