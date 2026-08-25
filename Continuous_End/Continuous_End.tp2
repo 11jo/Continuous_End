@@ -1,0 +1,18 @@
+BACKUP ~weidu_external/Continuous_End/backup~
+// AUTHOR
+SUPPORT ~https://github.com/11jo/Continuous_End/issues~
+VERSION ~1.0~
+
+README ~Continuous_End/readme/Continuous_End.txt~
+
+
+/* ======================= *
+ * Continuous NPC for EET  *
+ * ======================= */
+ 
+BEGIN ~Continuous NPC for EET (Install after NPC mods)~
+DESIGNATED 0
+LABEL ~Continuous_NPC_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ @1  // ~You must have ToB, BGT, BG2:EE or EET installed to install the Alora NPC mod.~
+
+INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
