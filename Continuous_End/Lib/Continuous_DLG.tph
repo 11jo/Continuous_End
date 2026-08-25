@@ -125,7 +125,7 @@
 	COPY_EXISTING_REGEXP GLOB ~^.+\.dlg$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 	// Alora BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+	PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND Continuous_Alora = 1 AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
 			SPRINT textToReplace ~ChangeAIScript("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN

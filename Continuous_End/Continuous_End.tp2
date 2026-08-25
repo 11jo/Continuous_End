@@ -47,7 +47,7 @@ BEGIN ~Continuous Alora for EET (Install after Alora BG2 mod)~
 DESIGNATED 1
 LABEL ~Continuous_Alora_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
-REQUIRE_PREDICATE MOD_IS_INSTALLED ~Alora.TP2~ ~0~  ~Alora BG2 need to be installed~
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) ~Alora BG2 need to be installed~
 FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
 
 	OUTER_SET Continuous_Alora = 1
