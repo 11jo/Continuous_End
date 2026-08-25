@@ -93,7 +93,7 @@ ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND
 			SPRINT textToReplace ~CreateCreature("C#ajan08",\[-1\.-1\],NNE)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("AR0319","Ajantis",[-1.-1],9)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("AR0319","Ajantis",[-1.-1])~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
@@ -106,7 +106,7 @@ BUT_ONLY
 			SPRINT textToReplace ~CreateCreature("C#Ajan08",\[237\.608\],NWW)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("c#aj00","Ajantis",[237.608],5)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("c#aj00","Ajantis",[237.608])~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
@@ -119,7 +119,7 @@ BUT_ONLY
 			SPRINT textToReplace ~CreateCreature("C#Ajan08",\[237\.608\],NWW)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("c#aj00","Ajantis",[237.608],5)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("c#aj00","Ajantis",[237.608])~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
