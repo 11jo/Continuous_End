@@ -1,51 +1,5 @@
 
 
-// Alora for BG2
-
-ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
-
-	COPY_EXISTING ~PDIALOG.2DA~ ~override~
-		PRETTY_PRINT_2DA
-		REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
-		REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
-		PRETTY_PRINT_2DA
-	BUT_ONLY
-
-		COPY_EXISTING ~interdia.2DA~ ~override~
-			PRETTY_PRINT_2DA
-			REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
-			REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
-			PRETTY_PRINT_2DA
-		BUT_ONLY
-
-				COPY_EXISTING ~25DIALOG.2DA~ ~override~
-					PRETTY_PRINT_2DA
-					REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
-					REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
-					PRETTY_PRINT_2DA
-				BUT_ONLY
-
-					COPY_EXISTING ~25BANTER.2DA~ ~override~
-						PRETTY_PRINT_2DA
-						REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
-						REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
-						PRETTY_PRINT_2DA
-					BUT_ONLY
-
-	COPY_EXISTING ~ITEM_USE.2DA~ ~override~
-		REPLACE_TEXTUALLY ~CMALORA~ ~Alora~
-	BUT_ONLY
-
-		COPY_EXISTING ~alora09.cre~ ~override~
-			WRITE_ASCIIE DEATHVAR ~Alora~ (32) // Script name / Death variable
-		
-			COPY_EXISTING ~alora25.cre~ ~override~
-				WRITE_ASCIIE DEATHVAR ~Alora~ (32) // Script name / Death variable
-
-	EXTEND_BOTTOM ~ar0702.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Alora.baf~ EVALUATE_BUFFER
-
-END
-
 // Ajantis for BG2
 
 ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 2) BEGIN
@@ -93,14 +47,42 @@ ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND
 			SPRINT textToReplace ~CreateCreature("C#ajan08",\[-1\.-1\],NNE)~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("AR0319","Ajantis",[-1.-1])~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ActionOverride("Ajantis",ChangeAIScript("C#AJAN",OVERRIDE))
+		SetGlobal("Continuous_BG2_Ajantis","MYAREA",1)
+		ActionOverride("Ajantis",SetGlobal("Continuous_BG2_Ajantis","LOCALS",1))
+		MoveGlobal("AR0319","Ajantis",[-1.-1])
+		ApplySpellRES("bdresurr","Ajantis")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","Ajantis")
+		ChangeEnemyAlly("Ajantis",NEUTRAL)
+		ChangeSpecifics("Ajantis",ALLIES)
+		ActionOverride("Ajantis",SetNumTimesTalkedTo(0))
+//		ActionOverride("Ajantis",SetGlobal("bd_joined","locals",0)) // SoD
+//		ActionOverride("Ajantis",ChangeAIScript("",CLASS))
+//		ActionOverride("Ajantis",ChangeAIScript("",RACE))
+//		ActionOverride("Ajantis",ChangeAIScript("",GENERAL))
+//		ActionOverride("Ajantis",ChangeAIScript("",DEFAULT))
+		ActionOverride("Ajantis",SetDialog("C#AJAN"))
+		GiveItemCreate("C#AJSHLD","Ajantis",0,0,0)
+		GiveItemCreate("SW1H02","Ajantis",0,0,0)
+		GiveItemCreate("PLAT01","Ajantis",0,0,0)
+		GiveItemCreate("HELM01","Ajantis",0,0,0)
+		GiveItemCreate("POTN52","Ajantis",5,0,0)
+		ActionOverride("Ajantis",SetItemFlags("C#AJSHLD",IDENTIFIED,TRUE))
+		ActionOverride("Ajantis",SetItemFlags("SW1H02",IDENTIFIED,TRUE))
+		ActionOverride("Ajantis",SetItemFlags("PLAT01",IDENTIFIED,TRUE))
+		ActionOverride("Ajantis",SetItemFlags("HELM01",IDENTIFIED,TRUE))
+		XEquipItem("C#AJSHLD","Ajantis",SLOT_SHIELD,EQUIP)
+		XEquipItem("SW1H02","Ajantis",SLOT_WEAPON1,EQUIP)
+		XEquipItem("PLAT01","Ajantis",SLOT_ARMOR,EQUIP)
+		XEquipItem("HELM01","Ajantis",SLOT_HELMET,EQUIP)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
 		END
 BUT_ONLY
-
+/*
 		COPY_EXISTING ~c#ajcu01.bcs~ ~override~
 			DECOMPILE_AND_PATCH BEGIN
 			SPRINT textToReplace ~CreateCreature("C#Ajan08",\[237\.608\],NWW)~
@@ -126,6 +108,6 @@ BUT_ONLY
 			END
 		END
 BUT_ONLY
-
+*/
 END
 

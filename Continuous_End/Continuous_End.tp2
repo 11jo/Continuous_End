@@ -12,6 +12,8 @@ ALWAYS
 
 	OUTER_SET Continuous_Ajantis = 0
 
+	OUTER_SET Continuous_Xan = 0
+
 END
 
 
@@ -28,11 +30,17 @@ REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 
 	OUTER_SET Continuous_Ajantis = 1
 
+	OUTER_SET Continuous_Xan = 1
+
 		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
-		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_Alora.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Ajantis.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~
 
 
 BEGIN ~Continuous Alora for EET (Install after Alora BG2 mod)~
@@ -48,7 +56,7 @@ FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
 
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
-		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_Alora.tph~
 
 
 BEGIN ~Continuous Ajantis for EET (Install after Ajantis BG2 mod)~
@@ -64,4 +72,20 @@ FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
 
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
-		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+		INCLUDE ~Continuous_End/lib/Continuous_Ajantis.tph~
+
+
+BEGIN ~Continuous Xan for EET (Install after Ajantis BG2 mod)~
+DESIGNATED 3
+LABEL ~Continuous_Xan_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~XAN.TP2~ ~0~  ~Xan BG2 need to be installed~
+FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+
+	OUTER_SET Continuous_Xan = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~

@@ -1,0 +1,64 @@
+
+
+// Alora for BG2
+
+ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+
+	COPY_EXISTING ~PDIALOG.2DA~ ~override~
+		PRETTY_PRINT_2DA
+		REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
+		REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
+		PRETTY_PRINT_2DA
+	BUT_ONLY
+
+		COPY_EXISTING ~interdia.2DA~ ~override~
+			PRETTY_PRINT_2DA
+			REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
+			REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
+			PRETTY_PRINT_2DA
+		BUT_ONLY
+
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~
+					PRETTY_PRINT_2DA
+					REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
+					REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
+					PRETTY_PRINT_2DA
+				BUT_ONLY
+
+					COPY_EXISTING ~25BANTER.2DA~ ~override~
+						PRETTY_PRINT_2DA
+						REPLACE_TEXTUALLY ~^Alora .*[%newline%]*~ ~~
+						REPLACE_TEXTUALLY ~^CMALORA~ ~Alora~
+						PRETTY_PRINT_2DA
+					BUT_ONLY
+
+	COPY_EXISTING ~ITEM_USE.2DA~ ~override~
+		REPLACE_TEXTUALLY ~CMALORA~ ~Alora~
+	BUT_ONLY
+
+		COPY_EXISTING ~alora09.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~Alora~ (32) // Script name / Death variable
+		
+			COPY_EXISTING ~alora25.cre~ ~override~
+				WRITE_ASCIIE DEATHVAR ~Alora~ (32) // Script name / Death variable
+
+		COPY_EXISTING ~ar0702.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~Global("CMAloraExists","AR0702",0)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+	!Exists("Alora")
+	!BeenInParty("Alora")
+	!Dead("Alora")
+	!InMyArea("Alora")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+BUT_ONLY
+
+	EXTEND_BOTTOM ~ar0702.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Alora.baf~ EVALUATE_BUFFER
+
+END
