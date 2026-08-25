@@ -25,6 +25,8 @@ BEGIN ~Continuous NPC for EET (Install after NPC mods)~
 DESIGNATED 0
 LABEL ~Continuous_NPC_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Alora = 1
 
@@ -49,6 +51,8 @@ LABEL ~Continuous_Alora_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) ~Alora BG2 need to be installed~
 FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Alora = 1
 
@@ -65,6 +69,8 @@ LABEL ~Continuous_Ajantis_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~  ~Ajantis BG2 need to be installed~
 FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Ajantis = 1
 
@@ -81,6 +87,8 @@ LABEL ~Continuous_Xan_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~XAN.TP2~ ~0~  ~Xan BG2 need to be installed~
 FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Xan = 1
 

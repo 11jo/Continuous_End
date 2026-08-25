@@ -14,24 +14,42 @@
 [![Platform](https://img.shields.io/badge/platform-Windows%20%a0%20macOS%20%a0%20Linux%20%a0%20Project%20Infinity-014a69)](https://github.com/11jo/Continuous_End/releases)
 -->
 
-**Author** : ***
+**Author** : ****
 
 
 ## Overwiew :  
 ----------------
 
+This mod will apply changes in game, in order to make several NPCs continuous without having to make any modifications to the original mods. 
+
 https://github.com/orgs/The-Gate-Project/discussions/10l
+
+Mod included : Alora bg2, Ajantis bg2, Xan bg2.
 
 ## Instruction :  
 ----------------
 
+The mod need to be installed *BEFORE* EET_End and *AFTER* any NPC mods intended to be continuous. (Despite what is wrongly stated in my post on G3 forum...)
 
-##### Componants :
+
+##### Components :
+
+- Main Component : Install all npcs already installed and included in the mod.
+
+- Alora bg2 Component : Install Continuous Alora.
+
+- Ajantis bg2 Component : Install Continuous Ajantis.
+
+- Xan bg2 Component : Install Continuous Xan.
 
 
 
 ## Installation / Uninstallation :
 ---------------------------------
+
+Extract archive contents into your game directory  
+Run Setup-Continuous_End.exe  
+Follow the prompt  
 
 
 ## Credits / Remerciements :
