@@ -103,7 +103,7 @@
 	// Alora BG2 START
 			SPRINT textToReplace ~ChangeAIScript("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_CMALORA",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -111,7 +111,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("CMALORA"\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_CMALORA",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -119,7 +119,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("CMALORA")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_CMALORA")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -127,7 +127,7 @@
 			END
 			SPRINT textToReplace ~~~~~"CMALORA"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Alora"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -135,7 +135,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -143,13 +143,23 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
 	// Alora BG2 END
+	// Ajantis BG2 START
+			SPRINT textToReplace ~~~~~"C#Ajantis"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Ajantis"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	// Ajantis BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
 ///////////////////////////////////////////////////////////////////////////////
@@ -166,7 +176,7 @@ BUT_ONLY
 	// Alora BG2 START
 			SPRINT textToReplace ~ChangeAIScript("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_CMALORA",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -174,7 +184,7 @@ BUT_ONLY
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("CMALORA"\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_CMALORA",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -182,7 +192,7 @@ BUT_ONLY
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("CMALORA")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_CMALORA")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -190,7 +200,7 @@ BUT_ONLY
 			END
 			SPRINT textToReplace ~~~~~"CMALORA"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Alora"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -198,7 +208,7 @@ BUT_ONLY
 			END
 			SPRINT textToReplace ~"DIALOG_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -206,13 +216,23 @@ BUT_ONLY
 			END
 			SPRINT textToReplace ~"SCRIPT_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~) AND (num_matches > 0) BEGIN
+			PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ AND Continuous_Alora = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
 	// Alora BG2 END
+	// Ajantis BG2 START
+			SPRINT textToReplace ~~~~~"C#Ajantis"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND (num_matches > 0) AND NOT (MOD_IS_INSTALLED ~Continuous_NPC.tp2~ 1) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Ajantis"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	// Ajantis BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
 ///////////////////////////////////////////////////////////////////////////////

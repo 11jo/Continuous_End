@@ -6,6 +6,15 @@ VERSION ~1.0~
 README ~Continuous_End/readme/Continuous_End.txt~
 
 
+ALWAYS
+
+	OUTER_SET Continuous_Alora = 0
+
+	OUTER_SET Continuous_Ajantis = 0
+
+END
+
+
 /* ======================= *
  * Continuous NPC for EET  *
  * ======================= */
@@ -13,6 +22,40 @@ README ~Continuous_End/readme/Continuous_End.txt~
 BEGIN ~Continuous NPC for EET (Install after NPC mods)~
 DESIGNATED 0
 LABEL ~Continuous_NPC_for_EET~
-REQUIRE_PREDICATE GAME_IS ~eet~ @1  // ~You must have ToB, BGT, BG2:EE or EET installed to install the Alora NPC mod.~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 
-INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
+	OUTER_SET Continuous_Alora = 1
+
+	OUTER_SET Continuous_Ajantis = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+
+
+BEGIN ~Continuous Alora for EET (Install after Alora BG2 mod)~
+DESIGNATED 1
+LABEL ~Continuous_Alora_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~Alora.TP2~ ~0~  ~Alora BG2 need to be installed~
+FORBID_COMPONENT ~Continuous_NPC.tp2~ ~0~ ~All components are already installed~
+
+	OUTER_SET Continuous_Alora = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
+
+
+BEGIN ~Continuous Ajantis for EET (Install after Ajantis BG2 mod)~
+DESIGNATED 2
+LABEL ~Continuous_Ajantis_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~  ~Ajantis BG2 need to be installed~
+FORBID_COMPONENT ~Continuous_NPC.tp2~ ~0~ ~All components are already installed~
+
+	OUTER_SET Continuous_Ajantis = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_Continuous.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_NPC.tph~
