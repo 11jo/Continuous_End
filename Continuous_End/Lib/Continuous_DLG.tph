@@ -479,6 +479,18 @@
 			END
 	END
 	// Branwen BG2 END
+	// Walahnan BG2 Start
+	PATCH_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~ AND Continuous_Walahnan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~6~) BEGIN
+			SPRINT textToReplace ~~~~~"L#2WALAH"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"L#WALAH"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Walahnan BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
 ///////////////////////////////////////////////////////////////////////////////

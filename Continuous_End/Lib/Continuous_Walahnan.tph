@@ -1,0 +1,90 @@
+
+
+// Walahnan for BG2
+
+ACTION_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~ AND Continuous_Walahnan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 6) BEGIN
+
+	COPY_EXISTING ~PDIALOG.2DA~ ~override~
+		PRETTY_PRINT_2DA
+		REPLACE_TEXTUALLY ~^L#WALAH .*[%newline%]*~ ~~
+		REPLACE_TEXTUALLY ~^L#2WALAH~ ~L#WALAH~
+		PRETTY_PRINT_2DA
+	BUT_ONLY
+
+		COPY_EXISTING ~interdia.2DA~ ~override~
+			PRETTY_PRINT_2DA
+			REPLACE_TEXTUALLY ~^L#WALAH .*[%newline%]*~ ~~
+			REPLACE_TEXTUALLY ~^L#2WALAH~ ~L#WALAH~
+			PRETTY_PRINT_2DA
+		BUT_ONLY
+
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~ // Useless but we never know
+					PRETTY_PRINT_2DA
+					REPLACE_TEXTUALLY ~^L#WALAH .*[%newline%]*~ ~~
+					REPLACE_TEXTUALLY ~^L#2WALAH~ ~L#WALAH~
+					PRETTY_PRINT_2DA
+				BUT_ONLY
+
+					COPY_EXISTING ~25BANTER.2DA~ ~override~ // Useless but we never know
+						PRETTY_PRINT_2DA
+						REPLACE_TEXTUALLY ~^L#WALAH .*[%newline%]*~ ~~
+						REPLACE_TEXTUALLY ~^L#2WALAH~ ~L#WALAH~
+						PRETTY_PRINT_2DA
+					BUT_ONLY
+
+						APPEND ~BGDIALOG.2da~ ~L#WALAH           L#WALAHP           L#WALAHJ           L#WALAHD~
+							UNLESS ~L#WALAH~  // Special BG1 content for MOD NPC
+
+							APPEND ~BGBANTER.2da~ ~L#WALAH           L#WALAHB~
+								UNLESS ~L#WALAH~  // Special BG1 content for MOD NPC
+
+	COPY_EXISTING ~ITEM_USE.2DA~ ~override~ // Useless but we never know
+		REPLACE_TEXTUALLY ~L#2WALAH~ ~L#WALAH~
+	BUT_ONLY
+
+		COPY_EXISTING ~l#2wh.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~L#WALAH~ (32) // Script name / Death variable
+
+			COPY_EXISTING ~l#2wh25.cre~ ~override~
+				WRITE_ASCIIE DEATHVAR ~L#WALAH~ (32) // Script name / Death variable
+
+		COPY_EXISTING ~AR1300.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~^[%TAB% ]*Global("L#2WHSpawnNoFighter","AR1300",1)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+	!Exists("L#WALAH")
+	!BeenInParty("L#WALAH")
+	!Dead("L#WALAH")
+	!InMyArea("L#WALAH")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+BUT_ONLY
+
+		COPY_EXISTING ~AR1304.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~Global("L#2CreateWalahnan","GLOBAL",0)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+	!Exists("L#WALAH")
+	!BeenInParty("L#WALAH")
+	!Dead("L#WALAH")
+	!InMyArea("L#WALAH")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+BUT_ONLY
+
+	EXTEND_TOP ~AR1300.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Walahnan_AR1300.baf~ EVALUATE_BUFFER
+	EXTEND_TOP ~AR1304.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Walahnan_AR1304.baf~ EVALUATE_BUFFER
+
+END
+
+// Note : L#WLHban.baf have a typo ligne 11 DisplayStringHead("L#SWalah",@111) ...."L#Walah"

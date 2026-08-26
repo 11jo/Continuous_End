@@ -1,0 +1,59 @@
+
+IF
+Global("L#2CreateWalahnan","GLOBAL",0) // Original block variable
+	Global("Continuous_BG2_Walahnan","MYAREA",0)
+	OR(2)
+		BeenInParty("L#WALAH")
+		Exists("L#WALAH")
+	!Dead("L#WALAH")
+//	!InPartyAllowDead("L#WALAH")
+//	!InParty("L#WALAH")
+//	!InMyArea("L#WALAH")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("L#WALAH",ChangeAIScript("L#2WH",OVERRIDE))
+		SetGlobal("Continuous_BG2_Walahnan","MYAREA",1)
+SetGlobal("L#2CreateWalahnan","GLOBAL",1) // Original block variable
+		ActionOverride("L#WALAH",SetGlobal("Continuous_BG2_Walahnan","LOCALS",1))
+		MoveGlobal("AR0702","L#WALAH",[360.350])
+		ActionOverride("L#WALAH",Face(5))
+		ApplySpellRES("bdresurr","L#WALAH")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","L#WALAH")
+		ChangeEnemyAlly("L#WALAH",NEUTRAL)
+		ChangeSpecifics("L#WALAH",ALLIES)
+		ActionOverride("L#WALAH",SetNumTimesTalkedTo(0))
+//		ActionOverride("L#WALAH",SetGlobal("bd_joined","locals",0)) // SoD
+//		ActionOverride("L#WALAH",ChangeAIScript("",CLASS))
+//		ActionOverride("L#WALAH",ChangeAIScript("",RACE))
+//		ActionOverride("L#WALAH",ChangeAIScript("",GENERAL))
+//		ActionOverride("L#WALAH",ChangeAIScript("",DEFAULT))
+		ActionOverride("L#WALAH",SetDialog("L#2WH"))
+		ActionOverride("L#WALAH",TakePartyItem("L#WALAHD"))
+		ActionOverride("L#WALAH",DestroyItem("L#WALAHD"))
+		ActionOverride("L#WALAH",TakePartyItem("L#WALAHF"))
+		ActionOverride("L#WALAH",DestroyItem("L#WALAHF"))
+		ActionOverride("L#WALAH",TakePartyItem("L#WALAD2"))
+		ActionOverride("L#WALAH",DestroyItem("L#WALAD2"))
+		GiveItemCreate("CLCK16","L#WALAH",0,0,0)
+		GiveItemCreate("L#2WHD2","L#WALAH",0,0,0)
+		GiveItemCreate("L#2WHF","L#WALAH",0,0,0)
+		GiveItemCreate("RING21","L#WALAH",0,0,0)
+		GiveItemCreate("POTN52","L#WALAH",1,0,0)
+		GiveItemCreate("WAND08","L#WALAH",3,0,0)
+		ActionOverride("L#WALAH",SetItemFlags("CLCK16",IDENTIFIED,TRUE))
+		ActionOverride("L#WALAH",SetItemFlags("L#2WHD2",IDENTIFIED,TRUE))
+		ActionOverride("L#WALAH",SetItemFlags("L#2WHF",IDENTIFIED,TRUE))
+		XEquipItem("L#2WHD2","L#WALAH",SLOT_WEAPON1,EQUIP)
+		XEquipItem("CLCK16","L#WALAH",SLOT_ARMOR,EQUIP)
+		XEquipItem("RING21","L#WALAH",SLOT_RING_LEFT,EQUIP)
+		XEquipItem("L#2WHF","L#WALAH",SLOT_MISC0,EQUIP)
+		XEquipItem("POTN52","L#WALAH",SLOT_MISC1,EQUIP)
+		XEquipItem("WAND08","L#WALAH",SLOT_MISC2,EQUIP)
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+// Note : What about Spells and Creature effect
+

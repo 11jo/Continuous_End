@@ -9,15 +9,17 @@ ASK_EVERY_COMPONENT
 
 ALWAYS
 
-	OUTER_SET Continuous_Alora = 0
+	OUTER_SET Continuous_Alora = 0 // DESIGNATED 1
 
-	OUTER_SET Continuous_Ajantis = 0
+	OUTER_SET Continuous_Ajantis = 0 // DESIGNATED 2 
 
-	OUTER_SET Continuous_Branwen = 0
+	OUTER_SET Continuous_Branwen = 0 // DESIGNATED 5
 
-	OUTER_SET Continuous_Coran = 0
+	OUTER_SET Continuous_Coran = 0 // DESIGNATED 4
 
-	OUTER_SET Continuous_Xan = 0
+	OUTER_SET Continuous_Walahnan = 0 // DESIGNATED 6
+
+	OUTER_SET Continuous_Xan = 0 // DESIGNATED 3
 
 END
 
@@ -41,6 +43,8 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Coran = 1
 
+	OUTER_SET Continuous_Walahnan = 1
+
 	OUTER_SET Continuous_Xan = 1
 
 		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
@@ -54,6 +58,8 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 			INCLUDE ~Continuous_End/lib/Continuous_Branwen.tph~
 
 			INCLUDE ~Continuous_End/lib/Continuous_Coran.tph~
+
+			INCLUDE ~Continuous_End/lib/Continuous_Walahnan.tph~
 
 			INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~
 
@@ -146,3 +152,21 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_Branwen.tph~
+
+
+BEGIN ~Continuous Walahnan for EET (Install after Walahnan BG2 mod)~
+DESIGNATED 6
+LABEL ~Continuous_Walahnan_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~)  ~Walahnan BG1 and Walahnan BG2 need to be installed~
+FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+
+	OUTER_SET Continuous_Walahnan = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Walahnan.tph~
