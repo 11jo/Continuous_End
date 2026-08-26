@@ -1,8 +1,8 @@
 
 
-// Coran for BG2
+// Branwen for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~ AND Continuous_Coran = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 4) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~ AND Continuous_Coran = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 5) BEGIN
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA
