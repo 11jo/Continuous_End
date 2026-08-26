@@ -13,9 +13,10 @@ THEN
 		SetInterrupt(FALSE)
 		ActionOverride("Coran",ChangeAIScript("O#CoranS",OVERRIDE))
 		SetGlobal("Continuous_BG2_Coran","MYAREA",1)
-		SetGlobal("O#CoranSpawn","GLOBAL",1)
+		SetGlobal("O#CoranSpawn","GLOBAL",1) // Original block variable
 		ActionOverride("Coran",SetGlobal("Continuous_BG2_Coran","LOCALS",1))
 		MoveGlobal("AR0020","Coran",[375.900])
+		ActionOverride("Coran",Face(0))
 		ApplySpellRES("bdresurr","Coran")
 		SmallWait(1)
 		ReallyForceSpellDeadRES("bdrejuve","Coran")

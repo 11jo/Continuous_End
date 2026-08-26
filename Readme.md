@@ -29,7 +29,14 @@ Mod included : Alora bg2, Ajantis bg2, Coran bg2, Xan bg2.
 ## Instruction :  
 ----------------
 
-The mod need to be installed *BEFORE* EET_End and *AFTER* any NPC mods intended to be continuous. (Despite what is wrongly stated in my post on G3 forum...)
+The mod need to be installed :
+
+- *After* any NPC mods intended to be continuous.
+- *After* any crossmod contents related to these NPCs.
+- *Before* EET_End.
+
+The best install order is right before EET_End.
+
 
 
 ##### Components :

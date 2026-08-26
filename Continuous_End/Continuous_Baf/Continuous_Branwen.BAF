@@ -1,0 +1,43 @@
+
+IF
+	Global("Continuous_BG2_Branwen","MYAREA",0)
+	OR(2)
+		BeenInParty("Branwen")
+		Exists("Branwen")
+	!Dead("Branwen")
+//	!InPartyAllowDead("Branwen")
+//	!InParty("Branwen")
+//	!InMyArea("Branwen")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Branwen",ChangeAIScript("O#BranS",OVERRIDE))
+		SetGlobal("Continuous_BG2_Branwen","MYAREA",1)
+		SetGlobal("O#BranSpawn","GLOBAL",1) // Original block variable
+		ActionOverride("Branwen",SetGlobal("Continuous_BG2_Branwen","LOCALS",1))
+		MoveGlobal("AR0500","Branwen",[4053.255])
+		ActionOverride("Branwen",Face(13))
+		ApplySpellRES("bdresurr","Branwen")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","Branwen")
+		ChangeEnemyAlly("Branwen",NEUTRAL)
+		ChangeSpecifics("Branwen",ALLIES)
+		ActionOverride("Branwen",SetNumTimesTalkedTo(0))
+//		ActionOverride("Branwen",SetGlobal("bd_joined","locals",0)) // SoD
+//		ActionOverride("Branwen",ChangeAIScript("",CLASS))
+//		ActionOverride("Branwen",ChangeAIScript("",RACE))
+//		ActionOverride("Branwen",ChangeAIScript("",GENERAL))
+//		ActionOverride("Branwen",ChangeAIScript("",DEFAULT))
+		ActionOverride("Branwen",SetDialog("O#Bran"))
+		GiveItemCreate("CHAN01","Branwen",0,0,0)
+		GiveItemCreate("SHLD03","Branwen",0,0,0)
+		GiveItemCreate("HAMM02","Branwen",0,0,0)
+		ActionOverride("Branwen",SetItemFlags("CHAN01",IDENTIFIED,TRUE))
+		ActionOverride("Branwen",SetItemFlags("SHLD03",IDENTIFIED,TRUE))
+		ActionOverride("Branwen",SetItemFlags("HAMM02",IDENTIFIED,TRUE))
+		XEquipItem("SHLD03","Branwen",SLOT_SHIELD,EQUIP)
+		XEquipItem("HAMM02","Branwen",SLOT_WEAPON1,EQUIP)
+		XEquipItem("CHAN01","Branwen",SLOT_ARMOR,EQUIP)
+		SetInterrupt(TRUE)
+		Continue()
+END

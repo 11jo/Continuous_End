@@ -34,7 +34,7 @@
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~StartDialog\([^)]*\)("OLD_DEATH_VAR"\([^)]*\))~
+			SPRINT textToReplace ~StartDialog\([^)]*\)("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_MOD_NAME",\2)~
@@ -276,7 +276,7 @@
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Coran"\([^)]*\))~
+			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Coran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Coran",\2)~
@@ -344,6 +344,76 @@
 			END
 	END
 	// Coran BG2 END
+	// Branwen BG2 START
+	PATCH_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~ AND Continuous_Branwen = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~5~) BEGIN
+			SPRINT textToReplace ~ChangeAIScript("O#Bran",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_O#Bran",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Bran",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Bran",\2)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~SetDialog\([^)]*\)("O#Bran")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_O#Bran")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~PlaySound("O#Bran")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~PlaySound("SOUND_O#Bran")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+//
+			SPRINT textToReplace ~~~~~"O#Bran"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Branwen"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+//
+			SPRINT textToReplace ~"DIALOG_O#Bran"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"SCRIPT_O#Bran"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"SOUND_O#Bran"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Branwen BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
 ///////////////////////////////////////////////////////////////////////////////

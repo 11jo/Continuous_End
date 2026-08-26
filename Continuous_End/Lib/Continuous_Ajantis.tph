@@ -51,6 +51,7 @@ ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND
 		SetGlobal("Continuous_BG2_Ajantis","MYAREA",1)
 		ActionOverride("Ajantis",SetGlobal("Continuous_BG2_Ajantis","LOCALS",1))
 		MoveGlobal("AR0319","Ajantis",[-1.-1])
+		ActionOverride("Ajantis",Face(9))
 		ApplySpellRES("bdresurr","Ajantis")
 		SmallWait(1)
 		ReallyForceSpellDeadRES("bdrejuve","Ajantis")

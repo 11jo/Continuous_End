@@ -14,9 +14,10 @@ THEN
 		SetInterrupt(FALSE)
 		ActionOverride("Xan",ChangeAIScript("O#XanS",OVERRIDE))
 		SetGlobal("Continuous_BG2_Xan","MYAREA",1)
-		SetGlobal("O#XanSpawned","GLOBAL",1)
+		SetGlobal("O#XanSpawned","GLOBAL",1) // Original block variable
 		ActionOverride("Xan",SetGlobal("Continuous_BG2_Xan","LOCALS",1))
 		MoveGlobal("AR1000","Xan",[2745.321])
+		ActionOverride("Xan",Face(4))
 		ApplySpellRES("bdresurr","Xan")
 		SmallWait(1)
 		ReallyForceSpellDeadRES("bdrejuve","Xan")
