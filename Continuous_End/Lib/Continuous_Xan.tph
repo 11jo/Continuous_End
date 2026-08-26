@@ -18,14 +18,14 @@ ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~ AND Continuous_Xan = 1) AND NOT (MOD_I
 			PRETTY_PRINT_2DA
 		BUT_ONLY
 
-				COPY_EXISTING ~25DIALOG.2DA~ ~override~
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~ // Useless but we never know
 					PRETTY_PRINT_2DA
 					REPLACE_TEXTUALLY ~^Xan .*[%newline%]*~ ~~
 					REPLACE_TEXTUALLY ~^O#XAN~ ~Xan~
 					PRETTY_PRINT_2DA
 				BUT_ONLY
 
-					COPY_EXISTING ~25BANTER.2DA~ ~override~
+					COPY_EXISTING ~25BANTER.2DA~ ~override~ // Useless but we never know
 						PRETTY_PRINT_2DA
 						REPLACE_TEXTUALLY ~^Xan .*[%newline%]*~ ~~
 						REPLACE_TEXTUALLY ~^O#XAN~ ~Xan~

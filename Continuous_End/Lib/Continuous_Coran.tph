@@ -18,21 +18,21 @@ ACTION_IF (MOD_IS_INSTALLED ~CORAN.TP2~ ~0~ AND Continuous_Coran = 1) AND NOT (M
 			PRETTY_PRINT_2DA
 		BUT_ONLY
 
-				COPY_EXISTING ~25DIALOG.2DA~ ~override~
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~ // Useless but we never know
 					PRETTY_PRINT_2DA
 					REPLACE_TEXTUALLY ~^Coran .*[%newline%]*~ ~~
 					REPLACE_TEXTUALLY ~^O#Coran~ ~Coran~
 					PRETTY_PRINT_2DA
 				BUT_ONLY
 
-					COPY_EXISTING ~25BANTER.2DA~ ~override~
+					COPY_EXISTING ~25BANTER.2DA~ ~override~ // Useless but we never know
 						PRETTY_PRINT_2DA
 						REPLACE_TEXTUALLY ~^Coran .*[%newline%]*~ ~~
 						REPLACE_TEXTUALLY ~^O#Coran~ ~Coran~
 						PRETTY_PRINT_2DA
 					BUT_ONLY
 
-	COPY_EXISTING ~ITEM_USE.2DA~ ~override~
+	COPY_EXISTING ~ITEM_USE.2DA~ ~override~ // Useless but we never know
 		REPLACE_TEXTUALLY ~O#Coran~ ~Coran~
 	BUT_ONLY
 
