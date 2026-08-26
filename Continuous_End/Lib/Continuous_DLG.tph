@@ -7,8 +7,8 @@
 	// StartDialogOverride("DIALOG_NAME",O:Target*)
 	// StartDialogOverrideInterrupt("DIALOG_NAME",O:Target*)
 	// StartDialogNoName("DIALOG_NAME",O:Target*)
-	// PlaySound(S:Sound*) 
 	// CreateCreature(S:NewObject*,P:Location*,I:Face*Dir) 
+	// PlaySound(S:Sound*) 
 	// Said(O:Object*,I:Dialog ID*) // Never used ?
 
 
@@ -30,7 +30,7 @@
 			SPRINT textToReplace ~CreateCreature("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("CRE_MOD_NAME",\1)~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_MOD_NAME",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
@@ -43,7 +43,7 @@
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~StartDialog\([^)]*\)("OLD_DEATH_VAR"\([^)]*\))~
+			SPRINT textToReplace ~StartDialog\([^)]*\)("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_MOD_NAME",\2)~
@@ -143,6 +143,14 @@
 		DECOMPILE_AND_PATCH BEGIN
 	// Alora BG2 START
 	PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND Continuous_Alora = 1 AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+			SPRINT textToReplace ~CreateCreature("CMALORA",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_CMALORA",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~ChangeAIScript("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -175,6 +183,14 @@
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
+			SPRINT textToReplace ~"CRE_CMALORA"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~"DIALOG_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -195,10 +211,10 @@
 	// Alora BG2 END
 	// Ajantis BG2 START
 	PATCH_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~2~) BEGIN
-			SPRINT textToReplace ~~~~~"C#Ajantis"~~~~~
+			SPRINT textToReplace ~"C#Ajantis"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Ajantis"~~~~~
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"Ajantis"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
@@ -207,6 +223,14 @@
 	// Ajantis BG2 END
 	// Xan BG2 START
 	PATCH_IF (MOD_IS_INSTALLED ~Xan.TP2~ ~0~ AND Continuous_Xan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~3~) BEGIN
+			SPRINT textToReplace ~CreateCreature("O#XAN",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#XAN",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~ChangeAIScript("O#XAN",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -249,6 +273,14 @@
 				~
 			END
 //
+			SPRINT textToReplace ~"CRE_O#XAN"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#XAN"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~"DIALOG_O#XAN"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -293,7 +325,7 @@
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Coran"\([^)]*\))~
+			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Coran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Coran",\2)~
@@ -363,6 +395,14 @@
 	// Coran BG2 END
 	// Branwen BG2 START
 	PATCH_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~ AND Continuous_Branwen = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~5~) BEGIN
+			SPRINT textToReplace ~CreateCreature("O#Bran",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#Bran",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~ChangeAIScript("O#Bran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -405,6 +445,14 @@
 				~
 			END
 //
+			SPRINT textToReplace ~"CRE_O#Bran"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~"DIALOG_O#Bran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
