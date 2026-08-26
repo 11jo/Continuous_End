@@ -13,7 +13,7 @@ THEN
 		SetInterrupt(FALSE)
 		ActionOverride("Alora",ChangeAIScript("cmalora",OVERRIDE))
 		SetGlobal("Continuous_BG2_Alora","MYAREA",1)
-		SetGlobal("CMAloraExists","MYAREA",1) // Original block variable
+SetGlobal("CMAloraExists","MYAREA",1) // Original block variable
 		ActionOverride("Alora",SetGlobal("Continuous_BG2_Alora","LOCALS",1))
 		MoveGlobal("AR0702","Alora",[360.350])
 		ActionOverride("Alora",Face(5))

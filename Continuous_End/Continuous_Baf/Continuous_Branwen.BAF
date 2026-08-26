@@ -13,7 +13,7 @@ THEN
 		SetInterrupt(FALSE)
 		ActionOverride("Branwen",ChangeAIScript("O#BranS",OVERRIDE))
 		SetGlobal("Continuous_BG2_Branwen","MYAREA",1)
-		SetGlobal("O#BranSpawn","GLOBAL",1) // Original block variable
+SetGlobal("O#BranSpawn","GLOBAL",1) // Original block variable
 		ActionOverride("Branwen",SetGlobal("Continuous_BG2_Branwen","LOCALS",1))
 		MoveGlobal("AR0500","Branwen",[4053.255])
 		ActionOverride("Branwen",Face(13))
