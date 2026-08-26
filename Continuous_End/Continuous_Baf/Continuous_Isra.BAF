@@ -1,0 +1,43 @@
+
+IF
+Global("rh#IsraExists","AR0709",0)	// Original block variable
+	Global("Continuous_BG2_Isra","MYAREA",0)
+	OR(2)
+		BeenInParty("rh#isra")
+		Exists("rh#isra")
+	!Dead("rh#isra")
+//	!InPartyAllowDead("rh#isra")
+//	!InParty("rh#isra")
+//	!InMyArea("rh#isra")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("rh#isra",ChangeAIScript("RH#ISR",OVERRIDE))
+		SetGlobal("Continuous_BG2_Isra","MYAREA",1)
+SetGlobal("rh#IsraExists","AR0709",1)	// Original block variable
+		ActionOverride("rh#isra",SetGlobal("Continuous_BG2_Isra","LOCALS",1))
+		MoveGlobal("AR0709","rh#isra",[412.768])
+		ActionOverride("rh#isra",Face(9))
+		ApplySpellRES("bdresurr","rh#isra")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","rh#isra")
+		ChangeEnemyAlly("rh#isra",NEUTRAL)
+		ChangeSpecifics("rh#isra",ALLIES)
+		ActionOverride("rh#isra",SetNumTimesTalkedTo(0))
+//		ActionOverride("rh#isra",SetGlobal("bd_joined","locals",0)) // SoD
+//		ActionOverride("rh#isra",ChangeAIScript("",CLASS))
+//		ActionOverride("rh#isra",ChangeAIScript("",RACE))
+//		ActionOverride("rh#isra",ChangeAIScript("",GENERAL))
+//		ActionOverride("rh#isra",ChangeAIScript("",DEFAULT))
+		GiveItemCreate("PLAT01","rh#isra",0,0,0)
+		GiveItemCreate("SW2H02","rh#isra",0,0,0)
+		GiveItemCreate("RH#ISRNG","rh#isra",0,0,0)
+		ActionOverride("rh#isra",SetItemFlags("PLAT01",IDENTIFIED,TRUE))
+		ActionOverride("rh#isra",SetItemFlags("SW2H02",IDENTIFIED,TRUE))
+		ActionOverride("rh#isra",SetItemFlags("RH#ISRNG",IDENTIFIED,TRUE))
+		XEquipItem("SW2H02","rh#isra",SLOT_WEAPON1,EQUIP)
+		XEquipItem("PLAT01","rh#isra",SLOT_ARMOR,EQUIP)
+		XEquipItem("RH#ISRNG","rh#isra",SLOT_RING_LEFT,EQUIP)
+		SetInterrupt(TRUE)
+		Continue()
+END

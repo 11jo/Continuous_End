@@ -9,6 +9,7 @@
 	// StartDialogNoName("DIALOG_NAME",O:Target*)
 	// CreateCreature(S:NewObject*,P:Location*,I:Face*Dir) 
 	// PlaySound(S:Sound*) 
+	// TextScreen(S:TextList*) 
 	// Said(O:Object*,I:Dialog ID*) // Never used ?
 
 
@@ -27,6 +28,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 /*
 	PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~0~ AND Continuous_NPC_NAME = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~XX~) BEGIN
+			SPRINT textToReplace ~TextScreen("OLD_DEATH_VAR")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TextScreen("Text_MOD_NAME")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~CreateCreature("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -77,6 +86,14 @@
 				~
 			END
 //
+			SPRINT textToReplace ~"Text_MOD_NAME"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
 			SPRINT textToReplace ~"CRE_MOD_NAME"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
@@ -491,6 +508,34 @@
 			END
 	END
 	// Walahnan BG2 END
+	// Isra BG2 START
+	PATCH_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~ AND Continuous_Isra = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~7~) BEGIN
+			SPRINT textToReplace ~TextScreen("rh#Isra2")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TextScreen("Text_rh#Isra2")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~~~~~"rh#Isra2"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"rh#isra"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"Text_rh#Isra2"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"rh#Isra2"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Isra BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
 ///////////////////////////////////////////////////////////////////////////////

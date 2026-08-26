@@ -1,0 +1,84 @@
+
+
+// Isra for BG2
+
+ACTION_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~ AND Continuous_Isra = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 7) BEGIN
+
+	COPY_EXISTING ~PDIALOG.2DA~ ~override~
+		PRETTY_PRINT_2DA
+		REPLACE_TEXTUALLY ~^rh#isra .*[%newline%]*~ ~~
+		REPLACE_TEXTUALLY ~^rh#Isra2~ ~rh#isra~
+		PRETTY_PRINT_2DA
+	BUT_ONLY
+
+		COPY_EXISTING ~interdia.2DA~ ~override~
+			PRETTY_PRINT_2DA
+			REPLACE_TEXTUALLY ~^rh#isra .*[%newline%]*~ ~~
+			REPLACE_TEXTUALLY ~^rh#Isra2~ ~rh#isra~
+			PRETTY_PRINT_2DA
+		BUT_ONLY
+
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~ // Useless but we never know
+					PRETTY_PRINT_2DA
+					REPLACE_TEXTUALLY ~^rh#isra .*[%newline%]*~ ~~
+					REPLACE_TEXTUALLY ~^rh#Isra2~ ~rh#isra~
+					PRETTY_PRINT_2DA
+				BUT_ONLY
+
+					COPY_EXISTING ~25BANTER.2DA~ ~override~ // Useless but we never know
+						PRETTY_PRINT_2DA
+						REPLACE_TEXTUALLY ~^rh#isra .*[%newline%]*~ ~~
+						REPLACE_TEXTUALLY ~^rh#Isra2~ ~rh#isra~
+						PRETTY_PRINT_2DA
+					BUT_ONLY
+
+						APPEND ~BGDIALOG.2da~ ~RH#ISRA           RH#ISRAP           RH#ISRAJ           RH#ISRAD~
+							UNLESS ~RH#ISRA~  // Special BG1 content for MOD NPC
+
+							APPEND ~BGBANTER.2da~ ~RH#ISRA           BRH#ISRA~
+								UNLESS ~RH#ISRA~  // Special BG1 content for MOD NPC
+
+	COPY_EXISTING ~ITEM_USE.2DA~ ~override~ // Useless but we never know
+		REPLACE_TEXTUALLY ~rh#Isra2~ ~rh#isra~
+	BUT_ONLY
+
+		COPY_EXISTING ~rh#isr.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~rh#isra~ (32) // Script name / Death variable
+
+			COPY_EXISTING ~rh#is25.cre~ ~override~
+				WRITE_ASCIIE DEATHVAR ~rh#isra~ (32) // Script name / Death variable
+
+		COPY_EXISTING ~AR0709.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~Global("rh#IsraExists","AR0709",0)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+	!Exists("rh#isra")
+	!BeenInParty("rh#isra")
+	!Dead("rh#isra")
+	!InMyArea("rh#isra")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+BUT_ONLY
+
+		COPY_EXISTING ~rh#isct4.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~CreateCreature("rh#isr",[670.311],3)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("AR1006","rh#isra",[670.311])
+		ActionOverride("rh#isra",Face(3))~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+BUT_ONLY
+
+	EXTEND_TOP ~AR0709.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Isra.baf~ EVALUATE_BUFFER
+
+END

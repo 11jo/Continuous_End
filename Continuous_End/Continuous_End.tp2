@@ -17,6 +17,8 @@ ALWAYS
 
 	OUTER_SET Continuous_Coran = 0 // DESIGNATED 4
 
+	OUTER_SET Continuous_Isra = 0 // DESIGNATED 7
+
 	OUTER_SET Continuous_Walahnan = 0 // DESIGNATED 6
 
 	OUTER_SET Continuous_Xan = 0 // DESIGNATED 3
@@ -43,6 +45,8 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Coran = 1
 
+	OUTER_SET Continuous_Isra = 1
+
 	OUTER_SET Continuous_Walahnan = 1
 
 	OUTER_SET Continuous_Xan = 1
@@ -58,6 +62,8 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 			INCLUDE ~Continuous_End/lib/Continuous_Branwen.tph~
 
 			INCLUDE ~Continuous_End/lib/Continuous_Coran.tph~
+
+			INCLUDE ~Continuous_End/lib/Continuous_Isra.tph~
 
 			INCLUDE ~Continuous_End/lib/Continuous_Walahnan.tph~
 
@@ -170,3 +176,21 @@ FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_Walahnan.tph~
+
+
+BEGIN ~Continuous Isra for EET (Install after Isra BG2 mod)~
+DESIGNATED 7
+LABEL ~Continuous_Isra_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~)  ~Isra BG1 and Isra BG2 need to be installed~
+FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
+FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
+FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+
+	OUTER_SET Continuous_Isra = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Isra.tph~
