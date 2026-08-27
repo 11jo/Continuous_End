@@ -536,6 +536,72 @@
 			END
 	END
 	// Isra BG2 END
+	// Tiax BG2 START
+	PATCH_IF (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~ AND Continuous_Tiax = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~8~) BEGIN
+			SPRINT textToReplace ~CreateCreature("O#Tiax",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#Tiax",\1)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Tiax",\([^)]*\))~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Tiax",\2)~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~SetDialog\([^)]*\)("O#Tiax")~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_O#Tiax")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+//
+			SPRINT textToReplace ~~~~~"O#Tiax"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Tiax"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+//
+			SPRINT textToReplace ~"CRE_O#Tiax"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Tiax"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~"DIALOG_O#Tiax"~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Tiax"~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Tiax BG2 END
+	// Yeslick BG2 START
+	PATCH_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND Continuous_Yeslick = 1 AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~9~) BEGIN
+			SPRINT textToReplace ~~~~~"LK#YESLK"~~~~~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Yeslick"~~~~~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+	END
+	// Yeslick BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
 ///////////////////////////////////////////////////////////////////////////////

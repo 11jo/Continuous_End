@@ -34,6 +34,7 @@ AmbientActivate("L#2WHEnter",TRUE) // Original block variable
 //		ActionOverride("L#WALAH",ChangeAIScript("",GENERAL))
 //		ActionOverride("L#WALAH",ChangeAIScript("",DEFAULT))
 		ActionOverride("L#WALAH",SetDialog("L#2WH"))
+ // Add l#2wh.cre items
 		ActionOverride("L#WALAH",TakePartyItem("l#walahe"))
 		ActionOverride("L#WALAH",DestroyItem("l#walahe"))
 		ActionOverride("L#WALAH",TakePartyItem("L#WALAHD"))
@@ -57,6 +58,8 @@ AmbientActivate("L#2WHEnter",TRUE) // Original block variable
 		XEquipItem("L#2WHF","L#WALAH",SLOT_MISC0,EQUIP)
 		XEquipItem("POTN52","L#WALAH",SLOT_MISC1,EQUIP)
 		XEquipItem("WAND08","L#WALAH",SLOT_MISC2,EQUIP)
+ // Add l#2wh.cre items
+		ReallyForceSpellRES("JOWalaCO","L#WALAH") // Add l#2wh.cre spells just in case 
 SetGlobal("L#2CreateWalahnan","GLOBAL",1) // Original block variable
 SetGlobal("L#2WHSpawnNoFighter","AR1300",3) // Original block variable
 		SetInterrupt(TRUE)

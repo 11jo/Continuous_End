@@ -59,6 +59,8 @@ ACTION_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~ AND Continuous_Branwen = 1) AND NO
 		END
 BUT_ONLY
 
+		COPY ~Continuous_End/Spl/Branwen_Memorised_Spell.SPL~			~override/JOBraCO.SPL~ // Add O#Bran.cre spells just in case 
+
 	EXTEND_TOP ~AR0500.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Branwen.baf~ EVALUATE_BUFFER
 
 END

@@ -1,0 +1,47 @@
+
+IF
+Global("LK#YeslickExists","GLOBAL",0) // Original block variable
+	Global("Continuous_BG2_Yeslick","MYAREA",0)
+	OR(2)
+		BeenInParty("Yeslick")
+		Exists("Yeslick")
+	!Dead("Yeslick")
+//	!InPartyAllowDead("Yeslick")
+//	!InParty("Yeslick")
+//	!InMyArea("Yeslick")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Yeslick",ChangeAIScript("LK#YESL",OVERRIDE))
+		SetGlobal("Continuous_BG2_Yeslick","MYAREA",1)
+SetGlobal("LK#YeslickExists","GLOBAL",1) // Original block variable
+		ActionOverride("Yeslick",SetGlobal("Continuous_BG2_Yeslick","LOCALS",1))
+		MoveGlobal("AR2010","Yeslick",[1000.1150])
+		ActionOverride("Yeslick",Face(0))
+		ApplySpellRES("bdresurr","Yeslick")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","Yeslick")
+		ChangeEnemyAlly("Yeslick",NEUTRAL)
+		ChangeSpecifics("Yeslick",ALLIES)
+		ActionOverride("Yeslick",SetNumTimesTalkedTo(0))
+//		ActionOverride("Yeslick",SetGlobal("bd_joined","locals",0)) // SoD
+//		ActionOverride("Yeslick",ChangeAIScript("",CLASS))
+//		ActionOverride("Yeslick",ChangeAIScript("",RACE))
+//		ActionOverride("Yeslick",ChangeAIScript("",GENERAL))
+//		ActionOverride("Yeslick",ChangeAIScript("",DEFAULT))
+		ActionOverride("Yeslick",SetDialog("LK#YESL"))
+ // Add lk#yesl.cre items
+		GiveItemCreate("HELM12","Yeslick",0,0,0)
+		GiveItemCreate("CHAN01","Yeslick",0,0,0)
+		GiveItemCreate("LK#YESW","Yeslick",0,0,0)
+		ActionOverride("Yeslick",SetItemFlags("LK#YESW",IDENTIFIED,TRUE))
+		ActionOverride("Yeslick",SetItemFlags("HELM12",IDENTIFIED,TRUE))
+		ActionOverride("Yeslick",SetItemFlags("CHAN01",IDENTIFIED,TRUE))
+		XEquipItem("LK#YESW","Yeslick",SLOT_WEAPON1,EQUIP)
+		XEquipItem("CHAN01","Yeslick",SLOT_ARMOR,EQUIP)
+		XEquipItem("HELM12","Yeslick",SLOT_HELMET,EQUIP)
+ // Add lk#yesl.cre items
+		ReallyForceSpellRES("JOYeslCO","Yeslick") // Add lk#yesl.cre spells just in case 
+		SetInterrupt(TRUE)
+		Continue()
+END

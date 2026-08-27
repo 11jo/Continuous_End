@@ -64,6 +64,7 @@ ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND
 //		ActionOverride("Ajantis",ChangeAIScript("",GENERAL))
 //		ActionOverride("Ajantis",ChangeAIScript("",DEFAULT))
 		ActionOverride("Ajantis",SetDialog("C#AJAN"))
+ // Add C#Ajan08.cre items
 		GiveItemCreate("C#AJSHLD","Ajantis",0,0,0)
 		GiveItemCreate("SW1H02","Ajantis",0,0,0)
 		GiveItemCreate("PLAT01","Ajantis",0,0,0)
@@ -76,7 +77,8 @@ ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND
 		XEquipItem("C#AJSHLD","Ajantis",SLOT_SHIELD,EQUIP)
 		XEquipItem("SW1H02","Ajantis",SLOT_WEAPON1,EQUIP)
 		XEquipItem("PLAT01","Ajantis",SLOT_ARMOR,EQUIP)
-		XEquipItem("HELM01","Ajantis",SLOT_HELMET,EQUIP)~
+		XEquipItem("HELM01","Ajantis",SLOT_HELMET,EQUIP)
+ // Add C#Ajan08.cre items~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~

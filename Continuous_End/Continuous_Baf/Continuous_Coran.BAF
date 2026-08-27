@@ -29,6 +29,7 @@ SetGlobal("O#CoranSpawn","GLOBAL",1) // Original block variable
 //		ActionOverride("Coran",ChangeAIScript("",GENERAL))
 //		ActionOverride("Coran",ChangeAIScript("",DEFAULT))
 		ActionOverride("Coran",SetDialog("O#Coran"))
+ // Add O#Coran.cre items
 		GiveItemCreate("LEAT01","Coran",0,0,0)
 		GiveItemCreate("BOW03","Coran",0,0,0)
 		GiveItemCreate("AROW01","Coran",20,0,0)
@@ -38,6 +39,7 @@ SetGlobal("O#CoranSpawn","GLOBAL",1) // Original block variable
 		ActionOverride("Coran",SetItemFlags("LEAT01",IDENTIFIED,TRUE))
 		XEquipItem("BOW03","Coran",SLOT_WEAPON1,EQUIP)
 		XEquipItem("LEAT01","Coran",SLOT_ARMOR,EQUIP)
+ // Add O#Coran.cre items
 		SetInterrupt(TRUE)
 		Continue()
 END

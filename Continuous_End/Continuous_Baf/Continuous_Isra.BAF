@@ -29,6 +29,7 @@ SetGlobal("rh#IsraExists","AR0709",1)	// Original block variable
 //		ActionOverride("rh#isra",ChangeAIScript("",RACE))
 //		ActionOverride("rh#isra",ChangeAIScript("",GENERAL))
 //		ActionOverride("rh#isra",ChangeAIScript("",DEFAULT))
+ // Add rh#isr.cre items
 		GiveItemCreate("PLAT01","rh#isra",0,0,0)
 		GiveItemCreate("SW2H02","rh#isra",0,0,0)
 		GiveItemCreate("RH#ISRNG","rh#isra",0,0,0)
@@ -38,6 +39,7 @@ SetGlobal("rh#IsraExists","AR0709",1)	// Original block variable
 		XEquipItem("SW2H02","rh#isra",SLOT_WEAPON1,EQUIP)
 		XEquipItem("PLAT01","rh#isra",SLOT_ARMOR,EQUIP)
 		XEquipItem("RH#ISRNG","rh#isra",SLOT_RING_LEFT,EQUIP)
+ // Add rh#isr.cre items
 		SetInterrupt(TRUE)
 		Continue()
 END

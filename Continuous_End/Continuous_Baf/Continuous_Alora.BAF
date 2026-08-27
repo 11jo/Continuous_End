@@ -29,6 +29,7 @@ SetGlobal("CMAloraExists","MYAREA",1) // Original block variable
 //		ActionOverride("Alora",ChangeAIScript("",GENERAL))
 //		ActionOverride("Alora",ChangeAIScript("",DEFAULT))
 		ActionOverride("Alora",SetDialog("CMALORA"))
+ // Add alora09.cre items
 		GiveItemCreate("LEAT05","Alora",0,0,0)
 		GiveItemCreate("BOW06","Alora",0,0,0)
 		GiveItemCreate("SW1H09","Alora",0,0,0)
@@ -42,6 +43,7 @@ SetGlobal("CMAloraExists","MYAREA",1) // Original block variable
 		ActionOverride("Alora",SetItemFlags("SW1H09",IDENTIFIED,TRUE))
 		XEquipItem("SW1H09","Alora",SLOT_WEAPON1,EQUIP)
 		XEquipItem("LEAT05","Alora",SLOT_ARMOR,EQUIP)
+ // Add alora09.cre items
 		SetInterrupt(TRUE)
 		Continue()
 END

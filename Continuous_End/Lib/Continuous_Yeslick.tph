@@ -1,0 +1,67 @@
+
+
+// Yeslick for BG2
+
+ACTION_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND Continuous_Yeslick = 1 AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 9) BEGIN
+
+	COPY_EXISTING ~PDIALOG.2DA~ ~override~
+		PRETTY_PRINT_2DA
+		REPLACE_TEXTUALLY ~^Yeslick .*[%newline%]*~ ~~
+		REPLACE_TEXTUALLY ~^LK#YESLK~ ~Yeslick~
+		PRETTY_PRINT_2DA
+	BUT_ONLY
+
+		COPY_EXISTING ~interdia.2DA~ ~override~
+			PRETTY_PRINT_2DA
+			REPLACE_TEXTUALLY ~^Yeslick .*[%newline%]*~ ~~
+			REPLACE_TEXTUALLY ~^LK#YESLK~ ~Yeslick~
+			PRETTY_PRINT_2DA
+		BUT_ONLY
+
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~ // Useless but we never know
+					PRETTY_PRINT_2DA
+					REPLACE_TEXTUALLY ~^Yeslick .*[%newline%]*~ ~~
+					REPLACE_TEXTUALLY ~^LK#YESLK~ ~Yeslick~
+					PRETTY_PRINT_2DA
+				BUT_ONLY
+
+					COPY_EXISTING ~25BANTER.2DA~ ~override~ // Useless but we never know
+						PRETTY_PRINT_2DA
+						REPLACE_TEXTUALLY ~^Yeslick .*[%newline%]*~ ~~
+						REPLACE_TEXTUALLY ~^LK#YESLK~ ~Yeslick~
+						PRETTY_PRINT_2DA
+					BUT_ONLY
+
+	COPY_EXISTING ~ITEM_USE.2DA~ ~override~ // Useless but we never know
+		REPLACE_TEXTUALLY ~LK#YESLK~ ~Yeslick~
+	BUT_ONLY
+
+		COPY_EXISTING ~lk#yesl.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~Yeslick~ (32) // Script name / Death variable
+		
+			COPY_EXISTING ~lk#yes25.cre~ ~override~
+				WRITE_ASCIIE DEATHVAR ~Yeslick~ (32) // Script name / Death variable
+
+		COPY_EXISTING ~AR2010.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+			SPRINT textToReplace ~Global("LK#YeslickExists","GLOBAL",0)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+	!Exists("Yeslick")
+	!BeenInParty("Yeslick")
+	!Dead("Yeslick")
+	!InMyArea("Yeslick")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+		END
+BUT_ONLY
+
+		COPY ~Continuous_End/Spl/Yeslick_Memorised_Spell.SPL~			~override/JOYeslCO.SPL~ // Add lk#yesl.cre spells just in case 
+
+	EXTEND_TOP ~AR2010.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Yeslick.baf~ EVALUATE_BUFFER
+
+END
+

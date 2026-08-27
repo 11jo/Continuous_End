@@ -29,6 +29,7 @@ SetGlobal("O#XanSpawned","GLOBAL",1) // Original block variable
 //		ActionOverride("Xan",ChangeAIScript("",GENERAL))
 //		ActionOverride("Xan",ChangeAIScript("",DEFAULT))
 		ActionOverride("Xan",SetDialog("O#Xan"))
+ // Add O#Xan09.cre items
 		ActionOverride("Xan",TakePartyItem("SW1H13"))
 		ActionOverride("Xan",DestroyItem("SW1H13"))
 		GiveItemCreate("O#XANMB","Xan",0,0,0)
@@ -36,6 +37,8 @@ SetGlobal("O#XanSpawned","GLOBAL",1) // Original block variable
 		GiveItemCreate("POTN08","Xan",2,0,0)
 		ActionOverride("Xan",SetItemFlags("O#XANMB",IDENTIFIED,TRUE))
 		XEquipItem("O#XANMB","Xan",SLOT_WEAPON1,EQUIP)
+ // Add O#Xan09.cre items
+		ReallyForceSpellRES("JOXanCO","Xan") // Add O#Xan09.cre spells just in case 
 		SetInterrupt(TRUE)
 		Continue()
 END

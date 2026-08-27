@@ -82,6 +82,8 @@ BUT_ONLY
 		END
 BUT_ONLY
 
+		COPY ~Continuous_End/Spl/Walahnan_Memorised_Spell.SPL~			~override/JOWalaCO.SPL~ // Add l#2wh.cre spells just in case 
+
 	EXTEND_TOP ~AR1300.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Walahnan_AR1300.baf~ EVALUATE_BUFFER
 	EXTEND_TOP ~AR1304.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Walahnan_AR1304.baf~ EVALUATE_BUFFER
 

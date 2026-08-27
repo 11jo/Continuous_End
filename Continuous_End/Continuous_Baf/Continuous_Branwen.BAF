@@ -29,6 +29,7 @@ SetGlobal("O#BranSpawn","GLOBAL",1) // Original block variable
 //		ActionOverride("Branwen",ChangeAIScript("",GENERAL))
 //		ActionOverride("Branwen",ChangeAIScript("",DEFAULT))
 		ActionOverride("Branwen",SetDialog("O#Bran"))
+ // Add O#Bran.cre items
 		GiveItemCreate("CHAN01","Branwen",0,0,0)
 		GiveItemCreate("SHLD03","Branwen",0,0,0)
 		GiveItemCreate("HAMM02","Branwen",0,0,0)
@@ -38,6 +39,8 @@ SetGlobal("O#BranSpawn","GLOBAL",1) // Original block variable
 		XEquipItem("SHLD03","Branwen",SLOT_SHIELD,EQUIP)
 		XEquipItem("HAMM02","Branwen",SLOT_WEAPON1,EQUIP)
 		XEquipItem("CHAN01","Branwen",SLOT_ARMOR,EQUIP)
+ // Add O#Bran.cre items
+		ReallyForceSpellRES("JOBraCO","Branwen") // Add O#Bran.cre spells just in case 
 		SetInterrupt(TRUE)
 		Continue()
 END

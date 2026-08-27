@@ -24,7 +24,7 @@ This mod will apply changes in game, in order to make several NPCs continuous wi
 
 https://github.com/orgs/The-Gate-Project/discussions/10l
 
-Mod included : Alora bg2, Ajantis bg2, Branwen bg2, Coran bg2, Isra bg2, Walahnan bg2, Xan bg2.
+Mod included : Alora bg2, Ajantis bg2, Branwen bg2, Coran bg2, Isra bg2, Tiax bg2, Walahnan bg2, Xan bg2, Yeslick bg2.
 
 ## Instruction :  
 ----------------
@@ -55,9 +55,13 @@ The best install order is right before EET_End.
 
 - Isra bg2 Component : Install only Continuous Isra.
 
+- Tiax bg2 Component : Install only Continuous Tiax.
+
 - Walahnan bg2 Component : Install only Continuous Walahnan.
 
 - Xan bg2 Component : Install only Continuous Xan.
+
+- Yeslick bg2 Component : Install only Continuous Yeslick.
 
 
 
@@ -81,6 +85,7 @@ v1.0: Initial release
 - Branwen bg2
 - Coran bg2
 - Isra bg2
+- Tiax bg2
 - Walahnan bg2
 - Xan bg2
-- 
+- Yeslick bg2

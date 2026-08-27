@@ -1,0 +1,37 @@
+
+IF
+GlobalGT("AsylumPlot","GLOBAL",54) // Original block variable
+Global("O#TiaxSpawn","GLOBAL",0) // Original block variable
+	Global("Continuous_BG2_Tiax","MYAREA",0)
+	OR(2)
+		BeenInParty("Tiax")
+		Exists("Tiax")
+	!Dead("Tiax")
+//	!InPartyAllowDead("Tiax")
+//	!InParty("Tiax")
+//	!InMyArea("Tiax")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("Tiax",ChangeAIScript("O#TiaxS",OVERRIDE))
+		SetGlobal("Continuous_BG2_Tiax","MYAREA",1)
+SetGlobal("O#TiaxSpawn","GLOBAL",1) // Original block variable
+		ActionOverride("Tiax",SetGlobal("Continuous_BG2_Tiax","LOCALS",1))
+		MoveGlobal("AR1516","Tiax",[1000.1150])
+		ActionOverride("Tiax",Face(0))
+		ApplySpellRES("bdresurr","Tiax")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","Tiax")
+		ChangeEnemyAlly("Tiax",NEUTRAL)
+		ChangeSpecifics("Tiax",ALLIES)
+		ActionOverride("Tiax",SetNumTimesTalkedTo(0))
+//		ActionOverride("Tiax",SetGlobal("bd_joined","locals",0)) // SoD
+//		ActionOverride("Tiax",ChangeAIScript("",CLASS))
+//		ActionOverride("Tiax",ChangeAIScript("",RACE))
+//		ActionOverride("Tiax",ChangeAIScript("",GENERAL))
+//		ActionOverride("Tiax",ChangeAIScript("",DEFAULT))
+		ActionOverride("Tiax",SetDialog("O#Tiax"))
+		ReallyForceSpellRES("JOTIAXCO","Tiax") // Add O#Tiax.cre spells just in case 
+		SetInterrupt(TRUE)
+		Continue()
+END

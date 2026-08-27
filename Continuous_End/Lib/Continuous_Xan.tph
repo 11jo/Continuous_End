@@ -59,6 +59,8 @@ ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~ AND Continuous_Xan = 1) AND NOT (MOD_I
 		END
 BUT_ONLY
 
+		COPY ~Continuous_End/Spl/Xan_Memorised_Spell.SPL~			~override/JOXanCO.SPL~ // Add O#Xan09.cre spells just in case 
+
 	EXTEND_TOP ~AR1000.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Xan.baf~ EVALUATE_BUFFER
 
 	EXTEND_TOP ~O#XAN25S.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Xan_XP.baf~ EVALUATE_BUFFER
