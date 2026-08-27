@@ -34,8 +34,7 @@ BEGIN ~Continuous NPC for EET (Install after NPC mods)~
 DESIGNATED 0
 LABEL ~Continuous_NPC_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Alora = 1
 
@@ -75,9 +74,8 @@ DESIGNATED 1
 LABEL ~Continuous_Alora_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) ~Alora BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Alora = 1
 
@@ -93,9 +91,8 @@ DESIGNATED 2
 LABEL ~Continuous_Ajantis_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~  ~Ajantis BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Ajantis = 1
 
@@ -111,9 +108,8 @@ DESIGNATED 3
 LABEL ~Continuous_Xan_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~XAN.TP2~ ~0~  ~Xan BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Xan = 1
 
@@ -129,9 +125,8 @@ DESIGNATED 4
 LABEL ~Continuous_Coran_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~CORAN.TP2~ ~0~  ~Coran BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Coran = 1
 
@@ -147,9 +142,8 @@ DESIGNATED 5
 LABEL ~Continuous_Branwen_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~  ~Branwen BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Branwen = 1
 
@@ -165,9 +159,8 @@ DESIGNATED 6
 LABEL ~Continuous_Walahnan_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~)  ~Walahnan BG1 and Walahnan BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Walahnan = 1
 
@@ -183,9 +176,8 @@ DESIGNATED 7
 LABEL ~Continuous_Isra_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~)  ~Isra BG1 and Isra BG2 need to be installed~
-FORBID_COMPONENT ~Continuous_End.tp2~ ~0~ ~All components are already installed~
-FORBID_COMPONENT ~EET_End.tp2~ ~0~ ~Need to be installed before EET_End~
-FORBID_COMPONENT ~EET_End.tp2~ ~1~ ~Need to be installed before EET_End~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
 
 	OUTER_SET Continuous_Isra = 1
 

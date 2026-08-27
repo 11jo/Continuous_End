@@ -20,8 +20,8 @@ THEN
 TriggerActivation("L#2WH",TRUE) // Original block variable
 AmbientActivate("L#2WHEnter",TRUE) // Original block variable
 		ActionOverride("L#WALAH",SetGlobal("Continuous_BG2_Walahnan","LOCALS",1))
-		MoveGlobal("AR0702","L#WALAH",[360.350])
-		ActionOverride("L#WALAH",Face(5))
+		MoveGlobal("AR1300","L#WALAH",[4516.1128])
+		ActionOverride("L#WALAH",Face(2))
 		ApplySpellRES("bdresurr","L#WALAH")
 		SmallWait(1)
 		ReallyForceSpellDeadRES("bdrejuve","L#WALAH")
@@ -34,6 +34,8 @@ AmbientActivate("L#2WHEnter",TRUE) // Original block variable
 //		ActionOverride("L#WALAH",ChangeAIScript("",GENERAL))
 //		ActionOverride("L#WALAH",ChangeAIScript("",DEFAULT))
 		ActionOverride("L#WALAH",SetDialog("L#2WH"))
+		ActionOverride("L#WALAH",TakePartyItem("l#walahe"))
+		ActionOverride("L#WALAH",DestroyItem("l#walahe"))
 		ActionOverride("L#WALAH",TakePartyItem("L#WALAHD"))
 		ActionOverride("L#WALAH",DestroyItem("L#WALAHD"))
 		ActionOverride("L#WALAH",TakePartyItem("L#WALAHF"))
