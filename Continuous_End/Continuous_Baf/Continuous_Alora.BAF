@@ -24,7 +24,7 @@ SetGlobal("CMAloraExists","MYAREA",1) // Original block variable
 		ChangeSpecifics("Alora",ALLIES)
 		ActionOverride("Alora",SetNumTimesTalkedTo(0))
 //		ActionOverride("Alora",SetGlobal("bd_joined","locals",0)) // SoD
-//		ActionOverride("Alora",ChangeAIScript("",CLASS))
+		ActionOverride("Alora",ChangeAIScript("THIEF4",CLASS))
 //		ActionOverride("Alora",ChangeAIScript("",RACE))
 //		ActionOverride("Alora",ChangeAIScript("",GENERAL))
 //		ActionOverride("Alora",ChangeAIScript("",DEFAULT))

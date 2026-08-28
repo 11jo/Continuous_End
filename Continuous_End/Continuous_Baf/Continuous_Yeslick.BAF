@@ -25,7 +25,7 @@ SetGlobal("LK#YeslickExists","GLOBAL",1) // Original block variable
 		ChangeSpecifics("Yeslick",ALLIES)
 		ActionOverride("Yeslick",SetNumTimesTalkedTo(0))
 //		ActionOverride("Yeslick",SetGlobal("bd_joined","locals",0)) // SoD
-//		ActionOverride("Yeslick",ChangeAIScript("",CLASS))
+		ActionOverride("Yeslick",ChangeAIScript("PRIEST3",CLASS))
 //		ActionOverride("Yeslick",ChangeAIScript("",RACE))
 //		ActionOverride("Yeslick",ChangeAIScript("",GENERAL))
 //		ActionOverride("Yeslick",ChangeAIScript("",DEFAULT))

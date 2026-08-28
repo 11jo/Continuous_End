@@ -1,11 +1,11 @@
 IF
 	GlobalGT("XanSummoned","GLOBAL",0)
 	Global("Continuous_XanSummoned_XP","LOCALS",0)
-    XPLT(Myself,2500000)
+    XPLT(Myself,20000)
 	InParty(Myself)
 THEN
     RESPONSE #100
 		SetGlobal("Continuous_XanSummoned_XP","LOCALS",1)
-        AddXPObject(Myself,2500000)
+        AddXPObject(Myself,2300000)
 		Continue()
 END

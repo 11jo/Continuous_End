@@ -19,13 +19,15 @@ ALWAYS
 
 	OUTER_SET Continuous_Isra = 0 // DESIGNATED 7
 
+	OUTER_SET Continuous_Kivan = 0 // DESIGNATED 10
+
 	OUTER_SET Continuous_Tiax = 0 // DESIGNATED 8
 
 	OUTER_SET Continuous_Walahnan = 0 // DESIGNATED 6
 
 	OUTER_SET Continuous_Xan = 0 // DESIGNATED 3
 
-	OUTER_SET Continuous_Yeslick = 1 // DESIGNATED 9
+	OUTER_SET Continuous_Yeslick = 0 // DESIGNATED 9
 
 END
 
@@ -50,6 +52,8 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 	OUTER_SET Continuous_Isra = 1
 
+	OUTER_SET Continuous_Kivan = 1
+
 	OUTER_SET Continuous_Tiax = 1
 
 	OUTER_SET Continuous_Walahnan = 1
@@ -72,13 +76,15 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 			INCLUDE ~Continuous_End/lib/Continuous_Isra.tph~
 
+			INCLUDE ~Continuous_End/lib/Continuous_Kivan.tph~
+
 			INCLUDE ~Continuous_End/lib/Continuous_Tiax.tph~
 
 			INCLUDE ~Continuous_End/lib/Continuous_Walahnan.tph~
 
 			INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~
 
-		INCLUDE ~Continuous_End/lib/Continuous_Yeslick.tph~
+			INCLUDE ~Continuous_End/lib/Continuous_Yeslick.tph~
 
 
 BEGIN ~Continuous Alora for EET (Install after Alora BG2 mod)~
@@ -232,5 +238,25 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
 
 		INCLUDE ~Continuous_End/lib/Continuous_Yeslick.tph~
+
+
+BEGIN ~Continuous Kivan for EET (Install after Kivan BG2 mod)~
+DESIGNATED 10
+LABEL ~Continuous_Kivan_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~)  ~Kivan BG2 need to be installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~All components are already installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~1~) ~Need to be installed before EET_End~
+
+	OUTER_SET Continuous_Kivan = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_BCS.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_DLG.tph~
+
+		INCLUDE ~Continuous_End/lib/Continuous_Kivan.tph~
+
+
+
 
 

@@ -1,0 +1,10 @@
+IF
+	Global("Continuous_BG2_Kivan","LOCALS",1)
+    XPLT(Myself,40000)
+	InParty(Myself)
+THEN
+    RESPONSE #100
+		SetGlobal("Continuous_BG2_Kivan","LOCALS",2)
+        AddXPObject(Myself,160000)
+		Continue()
+END
