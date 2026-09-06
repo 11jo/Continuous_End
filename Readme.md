@@ -42,28 +42,27 @@ The best install order is right before EET_End.
 ## Components : 
 ----------------
 
-- Main Component : Install all npcs already installed and included in the mod.
+- Main Component : Make all npcs below continuous, if their mods are already installed.
 
-
-- Alora bg2 Component : Install only Continuous Alora.
-
-- Ajantis bg2 Component : Install only Continuous Ajantis.
-
-- Branwen bg2 Component : Install only Continuous Branwen.
-
-- Coran bg2 Component : Install only Continuous Coran.
-
-- Isra bg2 Component : Install only Continuous Isra.
-
-- Kivan bg2 Component : Install only Continuous Kivan.
-
-- Tiax bg2 Component : Install only Continuous Tiax.
-
-- Walahnan bg2 Component : Install only Continuous Walahnan.
-
-- Xan bg2 Component : Install only Continuous Xan.
-
-- Yeslick bg2 Component : Install only Continuous Yeslick.
+	- Alora bg2 Component : Install only Continuous Alora.
+	
+	- Ajantis bg2 Component : Install only Continuous Ajantis.
+	
+	- Branwen bg2 Component : Install only Continuous Branwen.
+	
+	- Coran bg2 Component : Install only Continuous Coran.
+	
+	- Isra bg2 Component : Install only Continuous Isra.
+	
+	- Kivan bg2 Component : Install only Continuous Kivan.
+	
+	- Tiax bg2 Component : Install only Continuous Tiax.
+	
+	- Walahnan bg2 Component : Install only Continuous Walahnan.
+	
+	- Xan bg2 Component : Install only Continuous Xan.
+	
+	- Yeslick bg2 Component : Install only Continuous Yeslick.
 
 
 
@@ -81,7 +80,7 @@ Follow the prompt
 ## Version History :
 --------------------
 
-v1.0: Initial release
+v1.0 : 
 - Alora bg2
 - Ajantis bg2
 - Branwen bg2
@@ -92,3 +91,6 @@ v1.0: Initial release
 - Walahnan bg2
 - Xan bg2
 - Yeslick bg2
+
+v1.1 :
+- First release

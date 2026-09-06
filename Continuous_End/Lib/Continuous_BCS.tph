@@ -26,11 +26,18 @@
 						// Replace MY_COMPONENT by the COMPONENT name of your mod (usually ~0~)
 
 ///////////////////////////////////////////////////////////////////////////////
+
 /*
-	PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~0~ AND Continuous_NPC_NAME = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~XX~) BEGIN
+ACTION_IF Continuous_NPC_NAME = 1 AND (MOD_IS_INSTALLED ~MY_MOD_BG1.TP2~ ~MY_MOD_BG1_COMPONANT~ OR MOD_IS_INSTALLED ~MY_MOD_BG2.TP2~ ~MY_MOD_BG2_COMPONANT~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~NPC_NAME_COMPONANT~) BEGIN
+	OUTER_SET Continuous_NPC_NAME = 2
+END
+*/
+
+
+/*
 			SPRINT textToReplace ~TextScreen("OLD_DEATH_VAR")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF  Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TextScreen("Text_MOD_NAME")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -38,7 +45,7 @@
 			END
 			SPRINT textToReplace ~CreateCreature("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_MOD_NAME",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -46,7 +53,7 @@
 			END
 			SPRINT textToReplace ~ChangeAIScript("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_MOD_NAME",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -54,7 +61,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("OLD_DEATH_VAR",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_MOD_NAME",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -62,7 +69,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("OLD_DEATH_VAR")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_MOD_NAME")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -70,7 +77,7 @@
 			END
 			SPRINT textToReplace ~PlaySound("OLD_DEATH_VAR")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~PlaySound("SOUND_MOD_NAME")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -79,7 +86,7 @@
 //
 			SPRINT textToReplace ~~~~~"OLD_DEATH_VAR"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"NEW_DEATH_VAR"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -88,7 +95,7 @@
 //
 			SPRINT textToReplace ~"Text_MOD_NAME"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -96,7 +103,7 @@
 			END
 			SPRINT textToReplace ~"CRE_MOD_NAME"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -104,7 +111,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_MOD_NAME"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -112,7 +119,7 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_MOD_NAME"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -120,7 +127,7 @@
 			END
 			SPRINT textToReplace ~"SOUND_MOD_NAME"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"OLD_DEATH_VAR"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -141,10 +148,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 /*
-	PATCH_IF (MOD_IS_INSTALLED ~MY_MOD.TP2~ ~0~ AND Continuous_NPC_NAME = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~XX~) BEGIN
 			SPRINT textToReplace ~~~~~"OLD_DEATH_VAR"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_NPC_NAME = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"NEW_DEATH_VAR"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -153,16 +159,58 @@
 	END
 */
 
+	// Alora
+ACTION_IF Continuous_Alora = 1 AND (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+	OUTER_SET Continuous_Alora = 2
+END
+	// Ajantis 
+ACTION_IF Continuous_Ajantis = 1 AND (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~2~) BEGIN
+	OUTER_SET Continuous_Ajantis = 2
+END
+	// Xan
+ACTION_IF Continuous_Xan = 1 AND (MOD_IS_INSTALLED ~Xan.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~3~) BEGIN
+	OUTER_SET Continuous_Xan = 2
+END
+	// Coran
+ACTION_IF Continuous_Coran = 1 AND (MOD_IS_INSTALLED ~CORAN.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~4~) BEGIN
+	OUTER_SET Continuous_Coran = 2
+END
+	// Branwen
+ACTION_IF Continuous_Branwen = 1 AND (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~5~) BEGIN
+	OUTER_SET Continuous_Branwen = 2
+END
+	// Walahnan
+ACTION_IF Continuous_Walahnan = 1 AND (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~6~) BEGIN
+	OUTER_SET Continuous_Walahnan = 2
+END
+	// Isra
+ACTION_IF Continuous_Isra = 1  AND (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~7~) BEGIN
+	OUTER_SET Continuous_Isra = 2
+END
+	// Tiax
+ACTION_IF Continuous_Tiax = 1 AND (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~8~) BEGIN
+	OUTER_SET Continuous_Tiax = 2
+END
+	// Yeslick
+ACTION_IF Continuous_Yeslick = 1 AND (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~9~) BEGIN
+	OUTER_SET Continuous_Yeslick = 2
+END
+	// Kivan
+ACTION_IF Continuous_Kivan = 1 AND (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~10~) BEGIN
+	OUTER_SET Continuous_Kivan = 2
+END
+
+
+
 
 //                                    BCS                                           //
 
 	COPY_EXISTING_REGEXP GLOB ~^.+\.bcs$~ ~override~
 		DECOMPILE_AND_PATCH BEGIN
 	// Alora BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~ALORA.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND Continuous_Alora = 1 AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
 			SPRINT textToReplace ~CreateCreature("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_CMALORA",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -170,7 +218,7 @@
 			END
 			SPRINT textToReplace ~ChangeAIScript("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_CMALORA",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -178,7 +226,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("CMALORA",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_CMALORA",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -186,7 +234,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("CMALORA")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_CMALORA")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -194,7 +242,7 @@
 			END
 			SPRINT textToReplace ~~~~~"CMALORA"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Alora"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -202,7 +250,7 @@
 			END
 			SPRINT textToReplace ~"CRE_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -210,7 +258,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -218,7 +266,7 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_CMALORA"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Alora = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"CMALORA"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -227,10 +275,9 @@
 	END
 	// Alora BG2 END
 	// Ajantis BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~2~) BEGIN
 			SPRINT textToReplace ~"C#Ajantis"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Ajantis = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"Ajantis"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -239,10 +286,9 @@
 	END
 	// Ajantis BG2 END
 	// Xan BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~Xan.TP2~ ~0~ AND Continuous_Xan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~3~) BEGIN
 			SPRINT textToReplace ~CreateCreature("O#XAN",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#XAN",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -250,7 +296,7 @@
 			END
 			SPRINT textToReplace ~ChangeAIScript("O#XAN",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_O#XAN",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -258,7 +304,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("O#XAN",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#XAN",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -266,7 +312,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("O#XAN")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_O#XAN")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -274,7 +320,7 @@
 			END
 			SPRINT textToReplace ~PlaySound("O#XAN")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~PlaySound("SOUND_O#XAN")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -283,7 +329,7 @@
 //
 			SPRINT textToReplace ~~~~~"O#XAN"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Xan"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -292,7 +338,7 @@
 //
 			SPRINT textToReplace ~"CRE_O#XAN"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#XAN"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -300,7 +346,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_O#XAN"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#XAN"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -308,7 +354,7 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_O#XAN"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#XAN"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -316,7 +362,7 @@
 			END
 			SPRINT textToReplace ~"SOUND_O#XAN"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Xan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#XAN"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -325,10 +371,9 @@
 	END
 	// Xan BG2 END
 	// Coran BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~CORAN.TP2~ ~0~ AND Continuous_Coran = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~4~) BEGIN
 			SPRINT textToReplace ~CreateCreature("O#Coran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#Coran",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -336,7 +381,7 @@
 			END
 			SPRINT textToReplace ~ChangeAIScript("O#Coran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_O#Coran",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -344,7 +389,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Coran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Coran",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -352,7 +397,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("O#Coran")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_O#Coran")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -360,7 +405,7 @@
 			END
 			SPRINT textToReplace ~PlaySound("O#Coran")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~PlaySound("SOUND_O#Coran")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -369,7 +414,7 @@
 //
 			SPRINT textToReplace ~~~~~"O#Coran"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Coran"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -378,7 +423,7 @@
 //
 			SPRINT textToReplace ~"CRE_O#Coran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Coran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -386,7 +431,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_O#Coran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Coran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -394,7 +439,7 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_O#Coran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Coran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -402,7 +447,7 @@
 			END
 			SPRINT textToReplace ~"SOUND_O#Coran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Coran = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Coran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -411,10 +456,9 @@
 	END
 	// Coran BG2 END
 	// Branwen BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~BRANWEN.TP2~ ~0~ AND Continuous_Branwen = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~5~) BEGIN
 			SPRINT textToReplace ~CreateCreature("O#Bran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#Bran",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -422,7 +466,7 @@
 			END
 			SPRINT textToReplace ~ChangeAIScript("O#Bran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_O#Bran",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -430,7 +474,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Bran",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Bran",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -438,7 +482,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("O#Bran")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_O#Bran")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -446,7 +490,7 @@
 			END
 			SPRINT textToReplace ~PlaySound("O#Bran")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~PlaySound("SOUND_O#Bran")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -455,7 +499,7 @@
 //
 			SPRINT textToReplace ~~~~~"O#Bran"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Branwen"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -464,7 +508,7 @@
 //
 			SPRINT textToReplace ~"CRE_O#Bran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -472,7 +516,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_O#Bran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -480,7 +524,7 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_O#Bran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -488,7 +532,7 @@
 			END
 			SPRINT textToReplace ~"SOUND_O#Bran"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Branwen = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Bran"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -497,10 +541,9 @@
 	END
 	// Branwen BG2 END
 	// Walahnan BG2 Start
-	PATCH_IF (MOD_IS_INSTALLED ~WALAHNAN.TP2~ ~0~ AND MOD_IS_INSTALLED ~WALAHNANBG2.TP2~ ~0~ AND Continuous_Walahnan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~6~) BEGIN
 			SPRINT textToReplace ~~~~~"L#2WALAH"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Walahnan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"L#WALAH"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -509,10 +552,9 @@
 	END
 	// Walahnan BG2 END
 	// Isra BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~ISRA.TP2~ ~0~ AND MOD_IS_INSTALLED ~ISRA_BG2.TP2~ ~0~ AND Continuous_Isra = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~7~) BEGIN
 			SPRINT textToReplace ~TextScreen("rh#Isra2")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Isra = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~TextScreen("Text_rh#Isra2")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -520,7 +562,7 @@
 			END
 			SPRINT textToReplace ~~~~~"rh#Isra2"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Isra = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"rh#isra"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -528,7 +570,7 @@
 			END
 			SPRINT textToReplace ~"Text_rh#Isra2"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Isra = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"rh#Isra2"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -537,10 +579,9 @@
 	END
 	// Isra BG2 END
 	// Tiax BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~ AND Continuous_Tiax = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~8~) BEGIN
 			SPRINT textToReplace ~CreateCreature("O#Tiax",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Tiax = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_O#Tiax",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -548,7 +589,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("O#Tiax",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Tiax = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_O#Tiax",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -556,7 +597,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("O#Tiax")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Tiax = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_O#Tiax")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -565,7 +606,7 @@
 //
 			SPRINT textToReplace ~~~~~"O#Tiax"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Tiax = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Tiax"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -574,7 +615,7 @@
 //
 			SPRINT textToReplace ~"CRE_O#Tiax"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Tiax = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Tiax"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -582,7 +623,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_O#Tiax"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Tiax = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"O#Tiax"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -591,10 +632,9 @@
 	END
 	// Tiax BG2 END
 	// Yeslick BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND Continuous_Yeslick = 1 AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~9~) BEGIN
 			SPRINT textToReplace ~~~~~"LK#YESLK"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Yeslick = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Yeslick"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -603,10 +643,9 @@
 	END
 	// Yeslick BG2 END
 	// Kivan BG2 START
-	PATCH_IF (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~ AND Continuous_Kivan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~10~) BEGIN
 			SPRINT textToReplace ~CreateCreature("P#Kivan",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~CreateCreature("CRE_P#Kivan",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -614,7 +653,7 @@
 			END
 			SPRINT textToReplace ~ChangeAIScript("P#Kivan",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~ChangeAIScript("SCRIPT_P#Kivan",\1)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -622,7 +661,7 @@
 			END
 			SPRINT textToReplace ~StartDialog\([^)]*\)("P#Kivan",\([^)]*\))~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartDialog\1("DIALOG_P#Kivan",\2)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -630,7 +669,7 @@
 			END
 			SPRINT textToReplace ~SetDialog\([^)]*\)("P#Kivan")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~SetDialog\1("DIALOG_P#Kivan")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -638,7 +677,7 @@
 			END
 			SPRINT textToReplace ~PlaySound("P#Kivan")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~PlaySound("SOUND_P#Kivan")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -647,7 +686,7 @@
 //
 			SPRINT textToReplace ~~~~~"P#Kivan"~~~~~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"Kivan"~~~~~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -656,7 +695,7 @@
 //
 			SPRINT textToReplace ~"CRE_P#Kivan"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"P#Kivan"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -664,7 +703,7 @@
 			END
 			SPRINT textToReplace ~"DIALOG_P#Kivan"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"P#Kivan"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -672,7 +711,7 @@
 			END
 			SPRINT textToReplace ~"SCRIPT_P#Kivan"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"P#Kivan"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
@@ -680,7 +719,7 @@
 			END
 			SPRINT textToReplace ~"SOUND_P#Kivan"~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
+			PATCH_IF Continuous_Kivan = 2 AND (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~"P#Kivan"~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
