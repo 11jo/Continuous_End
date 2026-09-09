@@ -75,7 +75,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Alora BG2 END
 	// Ajantis BG2 START
 			SPRINT textToReplace ~"C#Ajantis"~
@@ -86,7 +85,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Ajantis BG2 END
 	// Xan BG2 START
 			SPRINT textToReplace ~CreateCreature("O#XAN",\([^)]*\))~
@@ -171,7 +169,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Xan BG2 END
 	// Coran BG2 START
 			SPRINT textToReplace ~CreateCreature("O#Coran",\([^)]*\))~
@@ -256,7 +253,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Coran BG2 END
 	// Branwen BG2 START
 			SPRINT textToReplace ~CreateCreature("O#Bran",\([^)]*\))~
@@ -341,7 +337,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Branwen BG2 END
 	// Walahnan BG2 Start
 			SPRINT textToReplace ~~~~~"L#2WALAH"~~~~~
@@ -352,7 +347,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Walahnan BG2 END
 	// Isra BG2 START
 			SPRINT textToReplace ~TextScreen("rh#Isra2")~
@@ -379,7 +373,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Isra BG2 END
 	// Tiax BG2 START
 			SPRINT textToReplace ~CreateCreature("O#Tiax",\([^)]*\))~
@@ -432,7 +425,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Tiax BG2 END
 	// Yeslick BG2 START
 			SPRINT textToReplace ~~~~~"LK#YESLK"~~~~~
@@ -443,7 +435,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Yeslick BG2 END
 	// Kivan BG2 START
 			SPRINT textToReplace ~CreateCreature("P#Kivan",\([^)]*\))~
@@ -528,7 +519,6 @@ Same as Continuous_BCS.tph
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
 			END
-	END
 	// Kivan BG2 END
 ///////////////////////////////////////////////////////////////////////////////
 // Add your block or blocks below
