@@ -2,7 +2,11 @@
 
 // Kivan for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~ AND Continuous_Kivan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~10~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~ AND NOT Continuous_Kivan = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~10~) BEGIN
+
+PRINT ~Installation of Continuous_Kivan...
+
+~
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA

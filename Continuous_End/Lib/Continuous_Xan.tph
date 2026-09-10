@@ -2,7 +2,11 @@
 
 // Xan for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~ AND Continuous_Xan = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~3~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~XAN.TP2~ ~0~ AND NOT Continuous_Xan = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~3~) BEGIN
+
+PRINT ~Installation of Continuous_Xan...
+
+~
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA

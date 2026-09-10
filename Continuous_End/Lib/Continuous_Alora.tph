@@ -2,7 +2,11 @@
 
 // Alora for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ AND Continuous_Alora = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ AND NOT Continuous_Alora = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~1~) BEGIN
+
+PRINT ~Installation of Continuous_Alora...
+
+~
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA

@@ -2,7 +2,11 @@
 
 // Tiax for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~ AND Continuous_Tiax = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 8) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~TIAX.TP2~ ~0~ AND NOT Continuous_Tiax = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 8) BEGIN
+
+PRINT ~Installation of Continuous_Tiax...
+
+~
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA

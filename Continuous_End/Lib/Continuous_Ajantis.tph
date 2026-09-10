@@ -2,7 +2,11 @@
 
 // Ajantis for BG2
 
-ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND Continuous_Ajantis = 1) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 2) BEGIN
+ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND NOT Continuous_Ajantis = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 2) BEGIN
+
+PRINT ~Installation of Continuous_Ajantis...
+
+~
 
 	COPY_EXISTING ~PDIALOG.2DA~ ~override~
 		PRETTY_PRINT_2DA

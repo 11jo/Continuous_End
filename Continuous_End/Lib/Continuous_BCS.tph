@@ -196,7 +196,7 @@ ACTION_IF Continuous_Yeslick = 1 AND (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~0~ OR M
 	OUTER_SET Continuous_Yeslick = 2
 END
 	// Kivan
-ACTION_IF Continuous_Kivan = 1 AND (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~10~) BEGIN
+ACTION_IF Continuous_Kivan = 1 AND (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~10~) BEGIN
 	OUTER_SET Continuous_Kivan = 2
 END
 
