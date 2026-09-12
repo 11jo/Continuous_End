@@ -16,7 +16,7 @@ THEN
 		SetGlobal("Continuous_BG2_Yeslick","MYAREA",1)
 SetGlobal("LK#YeslickExists","GLOBAL",1) // Original block variable
 		ActionOverride("Yeslick",SetGlobal("Continuous_BG2_Yeslick","LOCALS",1))
-		MoveGlobal("AR2010","Yeslick",[1000.1150])
+		MoveGlobal("AR2010","Yeslick",[586.318])
 		ActionOverride("Yeslick",Face(0))
 		ApplySpellRES("bdresurr","Yeslick")
 		SmallWait(1)
