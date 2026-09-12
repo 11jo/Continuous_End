@@ -72,6 +72,19 @@ BUT_ONLY
 		END
 BUT_ONLY
 
+
+  COPY - ~weidu.conf~ ~.../weidu.conf~
+    READ_2DA_ENTRY 0 2 3 "sir_ajantis_language"
+
+	PRINT ~Game in %sir_ajantis_language%...
+~
+
+WITH_TRA  "ajantisbg2/tra/english/GAME-AJANTISBG2.TRA"
+					"ajantisbg2/tra/%LANGUAGE%/GAME-AJANTISBG2.TRA"
+						"ajantisbg2/tra/%sir_ajantis_language%/GAME-AJANTISBG2.TRA" BEGIN
+		OUTER_SET sir_ajantis = RESOLVE_STR_REF (@33)
+END
+
 	EXTEND_BOTTOM ~c#ajcu00.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Ajantis_c#ajcu00.baf~ EVALUATE_BUFFER
 
 END
