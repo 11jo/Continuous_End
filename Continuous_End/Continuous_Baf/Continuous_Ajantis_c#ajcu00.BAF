@@ -22,7 +22,7 @@ THEN
 		ActionOverride("Ajantis",ChangeAIScript("C#AJAN",OVERRIDE))
 		SetGlobal("Continuous_BG2_Ajantis","MYAREA",1)
 		ActionOverride("Ajantis",SetGlobal("Continuous_BG2_Ajantis","LOCALS",1))
-		MoveGlobal("AR0319","Ajantis",[-1.-1])
+		MoveGlobal("AR0319","Ajantis",[266.452])
 	CreateVisualEffectObject("C#AJGKEX","Ajantis")
 		ActionOverride("Ajantis",Face(9))
 		ApplySpellRES("bdresurr","Ajantis")
