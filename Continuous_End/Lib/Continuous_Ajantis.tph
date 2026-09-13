@@ -4,7 +4,7 @@
 
 ACTION_IF (MOD_IS_INSTALLED ~AJANTISBG2.TP2~ ~0~ AND NOT Continuous_Ajantis = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 2) BEGIN
 
-PRINT ~Installation of Continuous_Ajantis...
+		PRINT ~Installation of Continuous_Ajantis...
 
 ~
 
@@ -45,47 +45,83 @@ PRINT ~Installation of Continuous_Ajantis...
 		
 			COPY_EXISTING ~c#ajatob.cre~ ~override~
 				WRITE_ASCIIE DEATHVAR ~Ajantis~ (32) // Script name / Death variable
-		
-		COPY_EXISTING ~DOGHMA.dlg~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~StartCutSceneEx("C#AJCU00",FALSE)~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~StartCutSceneEx("C#AJCU00",TRUE)~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-		END
-BUT_ONLY
-		
-		COPY_EXISTING ~c#ajcu00.bcs~ ~override~
-			DECOMPILE_AND_PATCH BEGIN
-			SPRINT textToReplace ~True()~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!BeenInParty("Ajantis")~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-		END
-BUT_ONLY
 
+// Get string
 
+// Game language
   COPY - ~weidu.conf~ ~.../weidu.conf~
-    READ_2DA_ENTRY 0 2 3 "sir_ajantis_language"
+    READ_2DA_ENTRY 0 2 3 "weidu_conf_language"
 
-	PRINT ~Game in %sir_ajantis_language%...
+			PRINT ~Game in %weidu_conf_language%...
 ~
 
-WITH_TRA  "ajantisbg2/tra/english/GAME-AJANTISBG2.TRA"
-					"ajantisbg2/tra/%LANGUAGE%/GAME-AJANTISBG2.TRA"
-						"ajantisbg2/tra/%sir_ajantis_language%/GAME-AJANTISBG2.TRA" BEGIN
-		OUTER_SET sir_ajantis = RESOLVE_STR_REF (@33)
+ACTION_IF "%weidu_conf_language%" STRING_EQUAL "en_US" BEGIN
+	OUTER_SPRINT ~game_language~ ~english~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "fr_fr" BEGIN
+	OUTER_SPRINT ~game_language~ ~french~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "de_DE" BEGIN
+	OUTER_SPRINT ~game_language~ ~german~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "it_IT" BEGIN
+	OUTER_SPRINT ~game_language~ ~italian~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "pl_PL" BEGIN
+	OUTER_SPRINT ~game_language~ ~polish~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "ru_RU" BEGIN
+	OUTER_SPRINT ~game_language~ ~russian~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "es_ES" BEGIN
+	OUTER_SPRINT ~game_language~ ~spanish~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "zh_CN" BEGIN
+	OUTER_SPRINT ~game_language~ ~Schinese~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "ko_KR" BEGIN
+	OUTER_SPRINT ~game_language~ ~korean~
+END ELSE ACTION_IF "%weidu_conf_language%" STRING_EQUAL "pl_PL" BEGIN
+	OUTER_SPRINT ~game_language~ ~Polish~
 END
 
-	EXTEND_BOTTOM ~c#ajcu00.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Ajantis_c#ajcu00.baf~ EVALUATE_BUFFER
+/* fetch language in which the mod is installed in - thanks to argent77 */
+	// Ajantis BG2
+// Language folder names listed in the order of LANGUAGE definitions in the mod.
+	ACTION_DEFINE_ARRAY languages BEGIN
+	"german" "english" /*"russian" "french" "polish" "spanish" "italian" "Schinese" "Polish" "korean"*/
+		END
+		
+		// Fetching language index from the WeiDU.log
+		OUTER_SET language_number = "-1"
+		COPY "WeiDU.log" "WeiDU.log"
+		REPLACE_EVALUATE CASE_INSENSITIVE
+			"^~.*AJANTISBG2\.tp2~ #\([0-9]+\) #5\b"
+			BEGIN
+			PATCH_IF (IS_AN_INT "MATCH1") BEGIN
+				SET language_number = MATCH1
+			END
+			END
+			"%MATCH0%"
+		BUT_ONLY IF_EXISTS
+		
+		ACTION_IF (language_number >= 0) BEGIN
+		OUTER_SPRINT mod_language $languages("%ajantisbg2_language_Continuous_End%")
+	END
+
+		WITH_TRA  "ajantisbg2/tra/english/GAME-AJANTISBG2.TRA" // fallback
+						"ajantisbg2/tra/%LANGUAGE%/GAME-AJANTISBG2.TRA" // Continuous_End installation language // Probably not a match
+							"ajantisbg2/tra/%game_language%/GAME-AJANTISBG2.TRA" // Game base language
+								"ajantisbg2/tra/%ajantisbg2_language_Continuous_End%/GAME-AJANTISBG2.TRA" // Ajantis BG2 installation language
+		BEGIN
+					OUTER_SET sir_ajantis = RESOLVE_STR_REF (@33)
+		END
+	
+		WITH_TRA  "ajantisbg2/tra/english/C#AJAN_ANDERE_PR.TRA" // fallback
+						"ajantisbg2/tra/%LANGUAGE%/C#AJAN_ANDERE_PR.TRA" // This mod installation language // Probably not a match
+							"ajantisbg2/tra/%game_language%/C#AJAN_ANDERE_PR.TRA" // Game base language
+								"ajantisbg2/tra/%ajantisbg2_language_Continuous_End%/C#AJAN_ANDERE_PR.TRA" // Mod fetch installation language
+		BEGIN
+					OUTER_SET Continuous_Ajantis_DOGHMA = STATE_WHICH_SAYS @276 FROM ~DOGHMA~
+		END
+
+		COMPILE EVALUATE_BUFFER ~Continuous_End/Continuous_D/Continuous_Ajantis.d~
+
+	COPY ~Continuous_End/Continuous_Baf/Continuous_Ajantis_c#ajcu00.baf~  ~weidu_external/Continuous_End/Continuous_Ajantis/JO_CEaja.baf~
+
+		COMPILE ~weidu_external/Continuous_End/Continuous_Ajantis/JO_CEaja.baf~ EVALUATE_BUFFER
 
 END
 
