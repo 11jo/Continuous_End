@@ -338,16 +338,6 @@ Same as Continuous_BCS.tph
 				~
 			END
 	// Branwen BG2 END
-	// Walahnan BG2 Start
-			SPRINT textToReplace ~~~~~"L#2WALAH"~~~~~
-			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
-			PATCH_IF Continuous_Walahnan = 2 AND (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~~~~~"L#WALAH"~~~~~
-				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
-				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
-				~
-			END
-	// Walahnan BG2 END
 	// Isra BG2 START
 			SPRINT textToReplace ~TextScreen("rh#Isra2")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
