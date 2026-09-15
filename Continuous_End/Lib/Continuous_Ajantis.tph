@@ -102,17 +102,17 @@ END
 	END
 
 		WITH_TRA  "ajantisbg2/tra/english/GAME-AJANTISBG2.TRA" // fallback
-						"ajantisbg2/tra/%LANGUAGE%/GAME-AJANTISBG2.TRA" // Continuous_End installation language // Probably not a match
-							"ajantisbg2/tra/%game_language%/GAME-AJANTISBG2.TRA" // Game base language
-								"ajantisbg2/tra/%ajantisbg2_language_Continuous_End%/GAME-AJANTISBG2.TRA" // Ajantis BG2 installation language
+//						"ajantisbg2/tra/autotra/%LANGUAGE%/GAME-AJANTISBG2.TRA" // Continuous_End installation language, Probably not a match
+//							"ajantisbg2/tra/autotra/%game_language%/GAME-AJANTISBG2.TRA" // Game base language (Only for base game STR_REF)
+								"ajantisbg2/tra/autotra/%ajantisbg2_language_Continuous_End%/GAME-AJANTISBG2.TRA" // Ajantis BG2 installation language
 		BEGIN
 					OUTER_SET sir_ajantis = RESOLVE_STR_REF (@33)
 		END
 	
 		WITH_TRA  "ajantisbg2/tra/english/C#AJAN_ANDERE_PR.TRA" // fallback
-						"ajantisbg2/tra/%LANGUAGE%/C#AJAN_ANDERE_PR.TRA" // This mod installation language // Probably not a match
-							"ajantisbg2/tra/%game_language%/C#AJAN_ANDERE_PR.TRA" // Game base language
-								"ajantisbg2/tra/%ajantisbg2_language_Continuous_End%/C#AJAN_ANDERE_PR.TRA" // Mod fetch installation language
+//						"ajantisbg2/tra/autotra/%LANGUAGE%/C#AJAN_ANDERE_PR.TRA" // This mod installation language // Probably not a match
+//							"ajantisbg2/tra/autotra/%game_language%/C#AJAN_ANDERE_PR.TRA" // Game base language (Only for base game STATE)
+								"ajantisbg2/tra/autotra/%ajantisbg2_language_Continuous_End%/C#AJAN_ANDERE_PR.TRA" // Mod fetch installation language
 		BEGIN
 					OUTER_SET Continuous_Ajantis_DOGHMA = STATE_WHICH_SAYS @276 FROM ~DOGHMA~
 		END
