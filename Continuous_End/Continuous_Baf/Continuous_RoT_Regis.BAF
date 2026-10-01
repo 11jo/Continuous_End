@@ -1,0 +1,31 @@
+
+IF
+	Global("Continuous_RoT_Reg2","MYAREA",0)
+	OR(2)
+		BeenInParty("F_REGIS2")
+		Exists("F_REGIS2")
+	!Dead("F_REGIS2")
+//	!InPartyAllowDead("F_REGIS2")
+//	!InParty("F_REGIS2")
+//	!InMyArea("F_REGIS2")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("F_REGIS2",ChangeAIScript("Reg2",OVERRIDE))
+		SetGlobal("Continuous_RoT_Reg2","MYAREA",1)
+		ActionOverride("F_REGIS2",SetGlobal("Continuous_RoT_Reg2","LOCALS",1))
+		MoveGlobal("MYAREA","F_REGIS2",[-1.-1])
+		ApplySpellRES("bdresurr","F_REGIS2")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","F_REGIS2")
+		ChangeEnemyAlly("F_REGIS2",NEUTRAL)
+		ChangeSpecifics("F_REGIS2",ALLIES)
+		ActionOverride("F_REGIS2",SetNumTimesTalkedTo(0))
+//		ActionOverride("F_REGIS2",ChangeAIScript("",CLASS))
+//		ActionOverride("F_REGIS2",ChangeAIScript("",RACE))
+//		ActionOverride("F_REGIS2",ChangeAIScript("",GENERAL))
+//		ActionOverride("F_REGIS2",ChangeAIScript("",DEFAULT))
+		ActionOverride("F_REGIS2",SetDialog("Reg2"))
+		SetInterrupt(TRUE)
+		Continue()
+END

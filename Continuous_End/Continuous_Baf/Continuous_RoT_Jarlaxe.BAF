@@ -1,0 +1,62 @@
+
+IF
+	Global("Continuous_RoT_Jarlaxe","MYAREA",0)
+	OR(2)
+		BeenInParty("F_JARLAXE")
+		Exists("F_JARLAXE")
+	!Dead("F_JARLAXE")
+//	!InPartyAllowDead("F_JARLAXE")
+//	!InParty("F_JARLAXE")
+//	!InMyArea("F_JARLAXE")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("F_JARLAXE",ChangeAIScript("Jarlax2",OVERRIDE))
+		SetGlobal("Continuous_RoT_Jarlaxe","MYAREA",1)
+		ActionOverride("F_JARLAXE",SetGlobal("Continuous_RoT_Jarlaxe","LOCALS",1))
+		MoveGlobal("AR1000","F_JARLAXE",[-1.-1])
+		Deactivate("F_JARLAXE")
+		ApplySpellRES("bdresurr","F_JARLAXE")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","F_JARLAXE")
+		ChangeEnemyAlly("F_JARLAXE",NEUTRAL)
+		ChangeSpecifics("F_JARLAXE",ALLIES)
+		ActionOverride("F_JARLAXE",SetNumTimesTalkedTo(0))
+//		ActionOverride("F_JARLAXE",ChangeAIScript("",CLASS))
+//		ActionOverride("F_JARLAXE",ChangeAIScript("",RACE))
+//		ActionOverride("F_JARLAXE",ChangeAIScript("",GENERAL))
+//		ActionOverride("F_JARLAXE",ChangeAIScript("",DEFAULT))
+		ActionOverride("F_JARLAXE",SetDialog("JARLAX2"))
+ // Add O#Xan09.cre items
+		GiveItemCreate("DWCHAN01","F_JARLAXE",0,0,0)
+		GiveItemCreate("JARLAXSC","F_JARLAXE",0,0,0)
+		GiveItemCreate("JARLAXS","F_JARLAXE",0,0,0)
+		ActionOverride("F_JARLAXE",SetItemFlags("DWCHAN01",IDENTIFIED,TRUE))
+		ActionOverride("F_JARLAXE",SetItemFlags("JARLAXSC",IDENTIFIED,TRUE))
+		ActionOverride("F_JARLAXE",SetItemFlags("JARLAXS",IDENTIFIED,TRUE))
+		XEquipItem("JARLAXS","F_JARLAXE",SLOT_WEAPON1,EQUIP)
+		XEquipItem("JARLAXSC","F_JARLAXE",SLOT_SHIELD,EQUIP)
+		XEquipItem("DWCHAN01","F_JARLAXE",SLOT_ARMOR,EQUIP)
+		ActionOverride("F_JARLAXE",DestroySelf())
+		SetInterrupt(TRUE)
+		Continue()
+END
+
+IF
+	Global("Continuous_RoT_Jarlaxe","MYAREA",0)
+	!Exists("F_JARLAXE")
+	!BeenInParty("F_JARLAXE")
+	!Dead("F_JARLAXE")
+	!InMyArea("F_JARLAXE")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("Continuous_RoT_Jarlaxe","MYAREA",1)
+		CreateCreature("Jarlax2",[-1.-1],0)
+		Deactivate("F_JARLAXE")
+		ActionOverride("F_JARLAXE",ChangeAIScript("Jarlax2",OVERRIDE))
+		ActionOverride("F_JARLAXE",SetGlobal("Continuous_RoT_Jarlaxe","LOCALS",1))
+		ActionOverride("F_JARLAXE",DestroySelf())
+		SetInterrupt(TRUE)
+		Continue()
+END

@@ -1,0 +1,31 @@
+
+IF
+	Global("Continuous_RoT_Wulfg2","MYAREA",0)
+	OR(2)
+		BeenInParty("F_WULFGAR")
+		Exists("F_WULFGAR")
+	!Dead("F_WULFGAR")
+//	!InPartyAllowDead("F_WULFGAR")
+//	!InParty("F_WULFGAR")
+//	!InMyArea("F_WULFGAR")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("F_WULFGAR",ChangeAIScript("Wulfg2",OVERRIDE))
+		SetGlobal("Continuous_RoT_Wulfg2","MYAREA",1)
+		ActionOverride("F_WULFGAR",SetGlobal("Continuous_RoT_Wulfg2","LOCALS",1))
+		MoveGlobal("MYAREA","F_WULFGAR",[-1.-1])
+		ApplySpellRES("bdresurr","F_WULFGAR")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","F_WULFGAR")
+		ChangeEnemyAlly("F_WULFGAR",NEUTRAL)
+		ChangeSpecifics("F_WULFGAR",ALLIES)
+		ActionOverride("F_WULFGAR",SetNumTimesTalkedTo(0))
+//		ActionOverride("F_WULFGAR",ChangeAIScript("",CLASS))
+//		ActionOverride("F_WULFGAR",ChangeAIScript("",RACE))
+//		ActionOverride("F_WULFGAR",ChangeAIScript("",GENERAL))
+//		ActionOverride("F_WULFGAR",ChangeAIScript("",DEFAULT))
+		ActionOverride("F_WULFGAR",SetDialog("Wulfg2"))
+		SetInterrupt(TRUE)
+		Continue()
+END

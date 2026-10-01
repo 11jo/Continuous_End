@@ -1,0 +1,42 @@
+- Aerie  // To see
+- Corwin // To see
+
+- Baeloth            // Todo
+- Gavin              // Todo
+- M'Khiin            // Todo
+- Sirene             // Todo
+- BG1 NPC in SoA&ToB // Todo
+- Skitia mods        // Todo
+
+- Ajantis                      // Ok
+- Alora                        // Ok
+- Branwen                      // Ok
+- Coran                        // Ok
+- Isra                         // Ok
+- Kivan                        // Ok
+- Region of terror             // Ok
+- Tiax                         // Ok
+- Xan                          // Ok
+- Yeslick                      // Ok
+
+- Dynaheir                             // No
+- Faldorn                              // No
+- Khalid                               // No
+- Montaron                             // No
+- Quayle                               // No
+- Sharteel                             // No
+- Skie                                 // No
+- Verr'Sza                             // No
+- Walahnan                             // No
+- Xzar                                 // No
+
+- Alora                                        // Native
+- Aura                                         // Native
+- Brage                                        // Native
+- Breagar                                      // Native
+- Brandock                                     // Native
+- Grey                                         // Native
+- Husam                                        // Native
+- Nikita                                       // Native
+- Sharteel SoD                                 // Native
+- Sharteel BG2                                 // Native

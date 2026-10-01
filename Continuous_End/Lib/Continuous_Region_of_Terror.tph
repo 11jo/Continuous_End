@@ -1,0 +1,323 @@
+
+
+// Region of Terror
+
+ACTION_IF (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~  AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~ AND NOT Continuous_Isra = 0) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ 11) BEGIN
+
+PRINT ~Installation of Continuous_Region of Terror...
+
+~
+	COPY_EXISTING ~PDIALOG.2DA~ ~override~
+		PRETTY_PRINT_2DA
+		REPLACE_TEXTUALLY ~^F_CATTIBR .*[%newline%]*~ ~~ // Catti-Brie
+		REPLACE_TEXTUALLY ~^F_BRUENOR .*[%newline%]*~ ~~ // Bruenor
+		REPLACE_TEXTUALLY ~^F_REGIS2 .*[%newline%]*~ ~~ // Regis
+		REPLACE_TEXTUALLY ~^F_DRIZZT .*[%newline%]*~ ~~ // Drizzt Do'Urden
+		REPLACE_TEXTUALLY ~^F_WULFGAR .*[%newline%]*~ ~~ // Wulfgar
+		REPLACE_TEXTUALLY ~^F_ARTEMIS .*[%newline%]*~ ~~ // Artemis Entreri
+		REPLACE_TEXTUALLY ~^F_JARLAXE .*[%newline%]*~ ~~ // Jarlaxe
+		REPLACE_TEXTUALLY ~^Catt2~ ~F_CATTIBR~
+		REPLACE_TEXTUALLY ~^Brue2~ ~F_BRUENOR~
+		REPLACE_TEXTUALLY ~^Reg2~ ~F_REGIS2 ~
+		REPLACE_TEXTUALLY ~^Driz2~ ~F_DRIZZT ~
+		REPLACE_TEXTUALLY ~^Wulfg2~ ~F_WULFGAR~
+		REPLACE_TEXTUALLY ~^Enter2~ ~F_ARTEMIS~
+		REPLACE_TEXTUALLY ~^Jarlax2~ ~F_JARLAXE~
+		PRETTY_PRINT_2DA
+	BUT_ONLY
+
+		COPY_EXISTING ~interdia.2DA~ ~override~
+			PRETTY_PRINT_2DA
+			REPLACE_TEXTUALLY ~^F_CATTIBR .*[%newline%]*~ ~~ // Catti-Brie
+			REPLACE_TEXTUALLY ~^F_BRUENOR .*[%newline%]*~ ~~ // Bruenor
+			REPLACE_TEXTUALLY ~^F_REGIS2 .*[%newline%]*~ ~~ // Regis
+			REPLACE_TEXTUALLY ~^F_DRIZZT .*[%newline%]*~ ~~ // Drizzt Do'Urden
+			REPLACE_TEXTUALLY ~^F_WULFGAR .*[%newline%]*~ ~~ // Wulfgar
+			REPLACE_TEXTUALLY ~^F_ARTEMIS .*[%newline%]*~ ~~ // Artemis Entreri
+			REPLACE_TEXTUALLY ~^F_JARLAXE .*[%newline%]*~ ~~ // Jarlaxe
+			REPLACE_TEXTUALLY ~^Catt2~ ~F_CATTIBR~
+			REPLACE_TEXTUALLY ~^Brue2~ ~F_BRUENOR~
+			REPLACE_TEXTUALLY ~^Reg2~ ~F_REGIS2 ~
+			REPLACE_TEXTUALLY ~^Driz2~ ~F_DRIZZT ~
+			REPLACE_TEXTUALLY ~^Wulfg2~ ~F_WULFGAR~
+			REPLACE_TEXTUALLY ~^Enter2~ ~F_ARTEMIS~
+			REPLACE_TEXTUALLY ~^Jarlax2~ ~F_JARLAXE~
+			PRETTY_PRINT_2DA
+		BUT_ONLY
+
+				COPY_EXISTING ~25DIALOG.2DA~ ~override~ // Useless but we never know
+					PRETTY_PRINT_2DA
+					REPLACE_TEXTUALLY ~^F_CATTIBR .*[%newline%]*~ ~~ // Catti-Brie
+					REPLACE_TEXTUALLY ~^F_BRUENOR .*[%newline%]*~ ~~ // Bruenor
+					REPLACE_TEXTUALLY ~^F_REGIS2 .*[%newline%]*~ ~~ // Regis
+					REPLACE_TEXTUALLY ~^F_DRIZZT .*[%newline%]*~ ~~ // Drizzt Do'Urden
+					REPLACE_TEXTUALLY ~^F_WULFGAR .*[%newline%]*~ ~~ // Wulfgar
+					REPLACE_TEXTUALLY ~^F_ARTEMIS .*[%newline%]*~ ~~ // Artemis Entreri
+					REPLACE_TEXTUALLY ~^F_JARLAXE .*[%newline%]*~ ~~ // Jarlaxe
+					REPLACE_TEXTUALLY ~^Catt2~ ~F_CATTIBR~
+					REPLACE_TEXTUALLY ~^Brue2~ ~F_BRUENOR~
+					REPLACE_TEXTUALLY ~^Reg2~ ~F_REGIS2 ~
+					REPLACE_TEXTUALLY ~^Driz2~ ~F_DRIZZT ~
+					REPLACE_TEXTUALLY ~^Wulfg2~ ~F_WULFGAR~
+					REPLACE_TEXTUALLY ~^Enter2~ ~F_ARTEMIS~
+					REPLACE_TEXTUALLY ~^Jarlax2~ ~F_JARLAXE~
+					PRETTY_PRINT_2DA
+				BUT_ONLY
+
+					COPY_EXISTING ~25BANTER.2DA~ ~override~ // Useless but we never know
+						PRETTY_PRINT_2DA
+						REPLACE_TEXTUALLY ~^F_CATTIBR .*[%newline%]*~ ~~ // Catti-Brie
+						REPLACE_TEXTUALLY ~^F_BRUENOR .*[%newline%]*~ ~~ // Bruenor
+						REPLACE_TEXTUALLY ~^F_REGIS2 .*[%newline%]*~ ~~ // Regis
+						REPLACE_TEXTUALLY ~^F_DRIZZT .*[%newline%]*~ ~~ // Drizzt Do'Urden
+						REPLACE_TEXTUALLY ~^F_WULFGAR .*[%newline%]*~ ~~ // Wulfgar
+						REPLACE_TEXTUALLY ~^F_ARTEMIS .*[%newline%]*~ ~~ // Artemis Entreri
+						REPLACE_TEXTUALLY ~^F_JARLAXE .*[%newline%]*~ ~~ // Jarlaxe
+						REPLACE_TEXTUALLY ~^Catt2~ ~F_CATTIBR~
+						REPLACE_TEXTUALLY ~^Brue2~ ~F_BRUENOR~
+						REPLACE_TEXTUALLY ~^Reg2~ ~F_REGIS2~
+						REPLACE_TEXTUALLY ~^Driz2~ ~F_DRIZZT~
+						REPLACE_TEXTUALLY ~^Wulfg2~ ~F_WULFGAR~
+						REPLACE_TEXTUALLY ~^Enter2~ ~F_ARTEMIS~
+						REPLACE_TEXTUALLY ~^Jarlax2~ ~F_JARLAXE~
+						PRETTY_PRINT_2DA
+					BUT_ONLY
+/*
+					COPY_EXISTING ~BGDIALOG.2DA~ ~override~
+						PRETTY_PRINT_2DA
+						REPLACE_TEXTUALLY ~^F_CATTIBR .*[%newline%]*~ ~~ // Catti-Brie
+						REPLACE_TEXTUALLY ~^F_BRUENOR .*[%newline%]*~ ~~ // Bruenor
+						REPLACE_TEXTUALLY ~^F_REGIS2 .*[%newline%]*~ ~~ // Regis
+						REPLACE_TEXTUALLY ~^F_DRIZZT .*[%newline%]*~ ~~ // Drizzt Do'Urden
+						REPLACE_TEXTUALLY ~^F_WULFGAR .*[%newline%]*~ ~~ // Wulfgar
+						REPLACE_TEXTUALLY ~^F_ARTEMIS .*[%newline%]*~ ~~ // Artemis Entreri
+						REPLACE_TEXTUALLY ~^F_JARLAXE .*[%newline%]*~ ~~ // Jarlaxe
+						PRETTY_PRINT_2DA
+					BUT_ONLY
+
+							APPEND ~BGDIALOG.2da~ ~F_CATTIBR           F_CATTIP           F_CATTIJ~
+								UNLESS ~F_CATTIBR~  // Special BG1 content for MOD NPC
+						APPEND ~BGDIALOG.2da~ ~F_BRUENOR           F_BRUENP           F_BRUENJ~
+							UNLESS ~F_BRUENOR~
+					APPEND ~BGDIALOG.2da~ ~F_REGIS2           F_REGISP           F_REGISJ~
+						UNLESS ~F_REGIS2~
+				APPEND ~BGDIALOG.2da~ ~F_DRIZZT           F_DRIZTP           F_DRIZTJ~
+					UNLESS ~F_DRIZZT~
+			APPEND ~BGDIALOG.2da~ ~F_WULFGAR           F_WULFGP           F_WULFGJ~
+				UNLESS ~F_WULFGAR~
+		APPEND ~BGDIALOG.2da~ ~F_ARTEMIS           F_ARTEMP           F_ARTEMJ~
+			UNLESS ~F_ARTEMIS~
+	APPEND ~BGDIALOG.2da~ ~F_JARLAXE           F_JARLAP           F_JARLAJ~
+		UNLESS ~F_JARLAXE~
+
+	APPEND ~BGBANTER.2da~ ~F_CATTIBR           F_CATTIB~
+		UNLESS ~F_CATTIBR~  // Special BG1 content for MOD NPC
+		APPEND ~BGBANTER.2da~ ~F_BRUENOR           F_BRUENB~
+			UNLESS ~F_BRUENOR~
+			APPEND ~BGBANTER.2da~ ~F_REGIS2           F_REGISB~
+				UNLESS ~F_REGIS2~
+				APPEND ~BGBANTER.2da~ ~F_DRIZZT           F_DRIZTB~
+					UNLESS ~F_DRIZZT~
+					APPEND ~BGBANTER.2da~ ~F_WULFGAR           F_WULFGB~
+						UNLESS ~F_WULFGAR~
+						APPEND ~BGBANTER.2da~ ~F_ARTEMIS           F_ARTEMB~
+							UNLESS ~F_ARTEMIS~
+								APPEND ~BGBANTER.2da~ ~F_JARLAXE           F_JARLAB~
+									UNLESS ~F_JARLAXE~
+*/
+
+	COPY_EXISTING ~ITEM_USE.2DA~ ~override~ // Useless but we never know
+		REPLACE_TEXTUALLY ~Catt2~ ~F_CATTIBR~
+		REPLACE_TEXTUALLY ~Brue2~ ~F_BRUENOR~
+		REPLACE_TEXTUALLY ~Reg2~ ~F_REGIS2 ~
+		REPLACE_TEXTUALLY ~Driz2~ ~F_DRIZZT ~
+		REPLACE_TEXTUALLY ~Wulfg2~ ~F_WULFGAR~
+		REPLACE_TEXTUALLY ~Enter2~ ~F_ARTEMIS~
+		REPLACE_TEXTUALLY ~Jarlax2~ ~F_JARLAXE~
+	BUT_ONLY
+
+		COPY_EXISTING ~Catt2.cre~ ~override~ // ENTERI.BCS  // Kit Feralan
+			WRITE_ASCIIE DEATHVAR ~F_CATTIBR~ (32) // Script name / Death variable
+		COPY_EXISTING ~Catt21.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_CATTIBR~ (32) // Script name / Death variable
+			
+		COPY_EXISTING ~Brue2.cre~ ~override~ // rr3306.BCS  // Kit Wizard Slayer
+			WRITE_ASCIIE DEATHVAR ~F_BRUENOR~ (32)
+		COPY_EXISTING ~Brue21.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_BRUENOR~ (32)
+		COPY_EXISTING ~Brue22.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_BRUENOR~ (32)
+		COPY_EXISTING ~Brue23.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_BRUENOR~ (32)
+
+		COPY_EXISTING ~Reg2.cre~ ~override~ // rr3220.BCS // No Kit
+			WRITE_ASCIIE DEATHVAR ~F_REGIS2~ (32)
+		COPY_EXISTING ~Reg21.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_REGIS2~ (32)
+		COPY_EXISTING ~Reg22.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_REGIS2~ (32)
+		COPY_EXISTING ~Reg23.cre~ ~override~
+			WRITE_ASCIIE DEATHVAR ~F_REGIS2~ (32)
+
+		COPY_EXISTING ~Driz21.cre~ ~override~ // AR0603.BCS // No Kit
+			WRITE_ASCIIE DEATHVAR ~F_CATTIBR~ (32)
+
+		COPY_EXISTING ~Wulfg2.cre~ ~override~ // AR0602.BCS // Kit Barbarian ALREADY
+			WRITE_ASCIIE DEATHVAR ~F_WULFGAR~ (32)
+
+		COPY_EXISTING ~Enter2.cre~ ~override~ // OTHESOE.BCS // Kit Assassin
+			WRITE_ASCIIE DEATHVAR ~F_ARTEMIS~ (32)
+
+		COPY_EXISTING ~Jarlax2.cre~ ~override~ // rr4002.BCS // Kit SWASHBUCKLER
+			WRITE_ASCIIE DEATHVAR ~F_JARLAXE~ (32)
+
+ // Catti-Brie
+		COPY_EXISTING ~ENTERI.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~CreateCreature("Catt2",[627.177],SW)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("MYAREA","F_CATTIBR",[627.177])
+			ActionOverride("F_CATTIBR",Face(2)
+			Activate("F_CATTIBR")
+			ActionOverride("F_CATTIBR",ChangeAIScript("CATT2",OVERRIDE))
+			ActionOverride("F_CATTIBR",Face(7))~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+	BUT_ONLY
+
+	EXTEND_TOP ~ENTERI.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Catti-Brie.baf~ EVALUATE_BUFFER
+
+ // Bruenor
+		COPY_EXISTING ~rr3306.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~Global("Brue2JoinedOnce","GLOBAL",0)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		!Exists("F_BRUENOR")
+		!BeenInParty("F_BRUENOR")
+		!Dead("F_BRUENOR")
+		!InMyArea("F_BRUENOR")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+	BUT_ONLY
+
+	EXTEND_TOP ~rr3306.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Bruenor.baf~ EVALUATE_BUFFER
+
+ // Regis
+		COPY_EXISTING ~rr3220.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~Global("Reg2JoinedOnce","GLOBAL",0)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		!Exists("F_REGIS2")
+		!BeenInParty("F_REGIS2")
+		!Dead("F_REGIS2")
+		!InMyArea("F_REGIS2")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+	BUT_ONLY
+
+	EXTEND_TOP ~rr3220.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Regis.baf~ EVALUATE_BUFFER
+
+ // Drizzt
+		COPY_EXISTING ~AR0603.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~Global("CreaDrizzi","AR0603",0)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		!Exists("F_DRIZZT")
+		!BeenInParty("F_DRIZZT")
+		!Dead("F_DRIZZT")
+		!InMyArea("F_DRIZZT")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+	BUT_ONLY
+
+	EXTEND_TOP ~AR0603.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Drizzt.baf~ EVALUATE_BUFFER
+
+ // Wulfgar
+		COPY_EXISTING ~AR0602.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~Global("CreaWulfi","AR0602",0)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		!Exists("F_WULFGAR")
+		!BeenInParty("F_WULFGAR")
+		!Dead("F_WULFGAR")
+		!InMyArea("F_WULFGAR")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+	BUT_ONLY
+
+	EXTEND_TOP ~AR0602.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Wulfgar.baf~ EVALUATE_BUFFER
+
+ // Artemis Entreri
+		COPY_EXISTING ~OTHESOE.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~True()~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Exists("F_ARTEMIS")
+		!BeenInParty("F_ARTEMIS")
+		!Dead("F_ARTEMIS")
+		!InMyArea("F_ARTEMIS")~
+					PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+					PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+					~
+				END
+			END
+	BUT_ONLY
+
+	EXTEND_TOP ~OTHESOE.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Artemis-Entreri.baf~ EVALUATE_BUFFER
+
+ // Jarlaxe
+		COPY_EXISTING ~rr4002.bcs~ ~override~
+			DECOMPILE_AND_PATCH BEGIN
+				SPRINT textToReplace ~CreateCreature("Jarlax2",[988.1160],NNW)~
+				COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+				PATCH_IF (num_matches > 0) BEGIN
+					REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~MoveGlobal("rr4002","F_JARLAXE",[988.1160])
+		ActionOverride("F_JARLAXE",Face(2)
+		Activate("F_JARLAXE")
+		ActionOverride("F_JARLAXE",ChangeAIScript("JARLAX2",OVERRIDE))
+		ActionOverride("F_JARLAXE",Face(7))~
+				END
+			END	
+	BUT_ONLY	
+
+	EXTEND_TOP ~rr4002.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Jarlaxe.baf~ EVALUATE_BUFFER
+
+END
+
+
+/*
+Region of Terror
+
+- Wulfg2 / F_WULFGAR : Wulfg2.cre, WULFG2.dlg, WULFG2.bcs
+- Reg2 / F_REGIS2 : Reg2.cre, Reg2.dlg, Reg2.bcs
+- Driz2 / F_DRIZZT : Driz21.cre, Driz2.dlg, Driz21.bcs
+- Brue2 / F_BRUENOR : Brue2.cre, Brue2.dlg, Brue2.bcs
+- Catt2 / F_CATTIBR : Catt2.cre, Catt2.dlg, Catt2.bcs
+- Enter2 / F_ARTEMIS : Enter2.cre, Enter2.dlg, Enter2.bcs
+- Jarlax2 / F_JARLAXE : Jarlax2.cre, Jarlax2.dlg, Jarlax2.bcs
+*/

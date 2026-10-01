@@ -1,0 +1,37 @@
+
+IF
+	Global("Continuous_RoT_Driz2","MYAREA",0)
+	OR(2)
+		BeenInParty("F_DRIZZT")
+		Exists("F_DRIZZT")
+	!Dead("F_DRIZZT")
+//	!InPartyAllowDead("F_DRIZZT")
+//	!InParty("F_DRIZZT")
+//	!InMyArea("F_DRIZZT")
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ActionOverride("F_DRIZZT",ChangeAIScript("Driz2",OVERRIDE))
+		SetGlobal("Continuous_RoT_Driz2","MYAREA",1)
+		ActionOverride("F_DRIZZT",SetGlobal("Continuous_RoT_Driz2","LOCALS",1))
+		MoveGlobal("MYAREA","F_DRIZZT",[-1.-1])
+		ApplySpellRES("bdresurr","F_DRIZZT")
+		SmallWait(1)
+		ReallyForceSpellDeadRES("bdrejuve","F_DRIZZT")
+		ChangeEnemyAlly("F_DRIZZT",NEUTRAL)
+		ChangeSpecifics("F_DRIZZT",ALLIES)
+		ActionOverride("F_DRIZZT",SetNumTimesTalkedTo(0))
+//		ActionOverride("F_DRIZZT",ChangeAIScript("",CLASS))
+//		ActionOverride("F_DRIZZT",ChangeAIScript("",RACE))
+//		ActionOverride("F_DRIZZT",ChangeAIScript("",GENERAL))
+//		ActionOverride("F_DRIZZT",ChangeAIScript("",DEFAULT))
+		ActionOverride("F_DRIZZT",SetDialog("Driz2"))
+ // Add DRIZ21.cre items
+		ActionOverride("F_DRIZZT",TakePartyItem("F_PANTH"))
+		ActionOverride("F_DRIZZT",DestroyItem("F_PANTH"))
+		GiveItemCreate("GUSTAT","F_DRIZZT",0,0,0)
+		ActionOverride("F_DRIZZT",SetItemFlags("GUSTAT",IDENTIFIED,TRUE))
+		XEquipItem("GUSTAT","F_DRIZZT",SLOT_MISC1,EQUIP)
+		SetInterrupt(TRUE)
+		Continue()
+END
