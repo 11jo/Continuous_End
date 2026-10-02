@@ -249,7 +249,7 @@ PRINT ~Installation of Continuous_Region of Terror...
 			END
 	BUT_ONLY
 
-	EXTEND_TOP ~AR0603.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Drizzt.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR0603.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Drizzt.baf~ EVALUATE_BUFFER
 
  // Wulfgar
 		COPY_EXISTING ~AR0602.bcs~ ~override~
@@ -269,7 +269,7 @@ PRINT ~Installation of Continuous_Region of Terror...
 			END
 	BUT_ONLY
 
-	EXTEND_TOP ~AR0602.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Wulfgar.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR0602.bcs~ ~Continuous_End/Continuous_Baf/Continuous_RoT_Wulfgar.baf~ EVALUATE_BUFFER
 
  // Artemis Entreri
 		COPY_EXISTING ~OTHESOE.bcs~ ~override~

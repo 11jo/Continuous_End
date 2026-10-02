@@ -14,7 +14,7 @@ THEN
 		ActionOverride("F_JARLAXE",ChangeAIScript("Jarlax2",OVERRIDE))
 		SetGlobal("Continuous_RoT_Jarlaxe","MYAREA",1)
 		ActionOverride("F_JARLAXE",SetGlobal("Continuous_RoT_Jarlaxe","LOCALS",1))
-		MoveGlobal("AR1000","F_JARLAXE",[-1.-1])
+		MoveGlobal("rr4002","F_JARLAXE",[-1.-1])
 		Deactivate("F_JARLAXE")
 		ApplySpellRES("bdresurr","F_JARLAXE")
 		SmallWait(1)

@@ -14,7 +14,7 @@ THEN
 		ActionOverride("F_CATTIBR",ChangeAIScript("CATT2",OVERRIDE))
 		SetGlobal("Continuous_RoT_Catti-Brie","MYAREA",1)
 		ActionOverride("F_CATTIBR",SetGlobal("Continuous_RoT_Catti-Brie","LOCALS",1))
-		MoveGlobal("MYAREA","F_CATTIBR",[-1.-1])
+		MoveGlobal("rr4002","F_CATTIBR",[-1.-1])
 		Deactivate("F_CATTIBR")
 		ApplySpellRES("bdresurr","F_CATTIBR")
 		SmallWait(1)

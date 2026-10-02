@@ -11,10 +11,11 @@ IF
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
-		ActionOverride("F_DRIZZT",ChangeAIScript("Driz2",OVERRIDE))
+		ActionOverride("F_DRIZZT",ChangeAIScript("Driz21",OVERRIDE))
 		SetGlobal("Continuous_RoT_Driz2","MYAREA",1)
 		ActionOverride("F_DRIZZT",SetGlobal("Continuous_RoT_Driz2","LOCALS",1))
-		MoveGlobal("MYAREA","F_DRIZZT",[-1.-1])
+		MoveGlobal("AR0603","F_DRIZZT",[3240.1940])
+		ActionOverride("F_DRIZZT",Face(3))
 		ApplySpellRES("bdresurr","F_DRIZZT")
 		SmallWait(1)
 		ReallyForceSpellDeadRES("bdrejuve","F_DRIZZT")
