@@ -1,13 +1,8 @@
 
 IF
 	Global("Continuous_RoT_Jarlaxe","MYAREA",0)
-	OR(2)
-		BeenInParty("F_JARLAXE")
-		Exists("F_JARLAXE")
+	BeenInParty("F_JARLAXE")
 	!Dead("F_JARLAXE")
-//	!InPartyAllowDead("F_JARLAXE")
-//	!InParty("F_JARLAXE")
-//	!InMyArea("F_JARLAXE")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -44,7 +39,6 @@ END
 
 IF
 	Global("Continuous_RoT_Jarlaxe","MYAREA",0)
-	!Exists("F_JARLAXE")
 	!BeenInParty("F_JARLAXE")
 	!Dead("F_JARLAXE")
 	!InMyArea("F_JARLAXE")

@@ -1,13 +1,8 @@
 
 IF
 	Global("Continuous_RoT_Catti-Brie","MYAREA",0)
-	OR(2)
-		BeenInParty("F_CATTIBR")
-		Exists("F_CATTIBR")
+	BeenInParty("F_CATTIBR")
 	!Dead("F_CATTIBR")
-//	!InPartyAllowDead("F_CATTIBR")
-//	!InParty("F_CATTIBR")
-//	!InMyArea("F_CATTIBR")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)
@@ -48,7 +43,6 @@ END
 
 IF
 	Global("Continuous_RoT_Catti-Brie","MYAREA",0)
-	!Exists("F_CATTIBR")
 	!BeenInParty("F_CATTIBR")
 	!Dead("F_CATTIBR")
 	!InMyArea("F_CATTIBR")

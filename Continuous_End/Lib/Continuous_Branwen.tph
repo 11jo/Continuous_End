@@ -52,10 +52,19 @@ PRINT ~Installation of Continuous_Branwen...
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-	!Exists("Branwen")
 	!BeenInParty("Branwen")
 	!Dead("Branwen")
 	!InMyArea("Branwen")~
+				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
+				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
+				~
+			END
+			SPRINT textToReplace ~CreateCreature("O#Bran",[4053.255],SEE)~
+			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
+			PATCH_IF (num_matches > 0) BEGIN
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
+		ActionOverride("Branwen",SetName(209499))
+		ChangeRace("Branwen",HUMAN)~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
 				PATCH_PRINT ~... // %textToReplace% found in %SOURCE_FILESPEC%
 				~
@@ -65,7 +74,7 @@ BUT_ONLY
 
 		COPY ~Continuous_End/Spl/Branwen_Memorised_Spell.SPL~			~override/JOBraCO.SPL~ // Add O#Bran.cre spells just in case 
 
-	EXTEND_TOP ~AR0500.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Branwen.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR0500.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Branwen.baf~ EVALUATE_BUFFER
 
 END
 

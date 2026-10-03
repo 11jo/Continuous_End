@@ -1,7 +1,7 @@
 - Aerie  // To see
-- Corwin // To see
 
 - Baeloth            // Todo
+- Corwin             // Todo
 - Gavin              // Todo
 - M'Khiin            // Todo
 - Sirene             // Todo
@@ -38,5 +38,6 @@
 - Grey                                         // Native
 - Husam                                        // Native
 - Nikita                                       // Native
+- Safana in Amn                                // Native
 - Sharteel SoD                                 // Native
 - Sharteel BG2                                 // Native

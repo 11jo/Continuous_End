@@ -1,13 +1,8 @@
 
 IF
 	Global("Continuous_RoT_Reg2","MYAREA",0)
-	OR(2)
-		BeenInParty("F_REGIS2")
-		Exists("F_REGIS2")
+	BeenInParty("F_REGIS2")
 	!Dead("F_REGIS2")
-//	!InPartyAllowDead("F_REGIS2")
-//	!InParty("F_REGIS2")
-//	!InMyArea("F_REGIS2")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

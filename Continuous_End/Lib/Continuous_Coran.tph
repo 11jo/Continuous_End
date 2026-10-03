@@ -52,7 +52,6 @@ PRINT ~Installation of Continuous_Coran...
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-	!Exists("Coran")
 	!BeenInParty("Coran")
 	!Dead("Coran")
 	!InMyArea("Coran")~
@@ -63,7 +62,7 @@ PRINT ~Installation of Continuous_Coran...
 		END
 BUT_ONLY
 
-	EXTEND_TOP ~AR0020.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Coran.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR0020.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Coran.baf~ EVALUATE_BUFFER
 
 END
 

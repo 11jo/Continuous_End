@@ -52,7 +52,6 @@ PRINT ~Installation of Continuous_Alora...
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-	!Exists("Alora")
 	!BeenInParty("Alora")
 	!Dead("Alora")
 	!InMyArea("Alora")~

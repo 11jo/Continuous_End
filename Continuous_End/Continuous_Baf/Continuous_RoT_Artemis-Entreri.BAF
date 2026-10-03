@@ -1,13 +1,8 @@
 
 IF
 	Global("Continuous_RoT_Enter2","MYAREA",0)
-	OR(2)
-		BeenInParty("F_ARTEMIS")
-		Exists("F_ARTEMIS")
+	BeenInParty("F_ARTEMIS")
 	!Dead("F_ARTEMIS")
-//	!InPartyAllowDead("F_ARTEMIS")
-//	!InParty("F_ARTEMIS")
-//	!InMyArea("F_ARTEMIS")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

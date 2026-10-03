@@ -54,8 +54,7 @@ PRINT ~Installation of Continuous_Kivan...
 			SPRINT textToReplace ~!Exists("Kivan")~
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
-				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!Exists("Kivan")
-	!BeenInParty("Kivan")
+				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~!BeenInParty("Kivan")
 	!Dead("Kivan")
 	!InMyArea("Kivan")~
 				PATCH_PRINT ~Patching: %num_matches% matches found in %SOURCE_FILESPEC% for REPLACE_TEXTUALLY: %textToReplace%~
@@ -69,13 +68,13 @@ BUT_ONLY
 
 	OUTER_SPRINT "Kivan_ARE" "AR0700"
 
-		EXTEND_TOP ~AR0700.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Kivan.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~AR0700.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Kivan.baf~ EVALUATE_BUFFER
 
 	OUTER_SPRINT "Kivan_LOC" "427.416"
 
 	OUTER_SPRINT "Kivan_ARE" "AR0703"
 
-		EXTEND_TOP ~AR0703.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Kivan.baf~ EVALUATE_BUFFER
+		EXTEND_BOTTOM ~AR0703.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Kivan.baf~ EVALUATE_BUFFER
 
 	EXTEND_TOP ~P#KIV01.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Kivan_XP.baf~ EVALUATE_BUFFER
 

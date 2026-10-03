@@ -1,13 +1,9 @@
 
 IF
 	Global("Continuous_BG2_Alora","MYAREA",0)
-	OR(2)
-		BeenInParty("Alora")
-		Exists("Alora")
+	Global("CMAloraExists","MYAREA",0)	// Original block variable
+	BeenInParty("Alora")
 	!Dead("Alora")
-//	!InPartyAllowDead("Alora")
-//	!InParty("Alora")
-//	!InMyArea("Alora")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

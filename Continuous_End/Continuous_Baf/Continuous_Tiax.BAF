@@ -3,13 +3,8 @@ IF
 GlobalGT("AsylumPlot","GLOBAL",54) // Original block variable
 Global("O#TiaxSpawn","GLOBAL",0) // Original block variable
 	Global("Continuous_BG2_Tiax","MYAREA",0)
-	OR(2)
-		BeenInParty("Tiax")
-		Exists("Tiax")
+	BeenInParty("Tiax")
 	!Dead("Tiax")
-//	!InPartyAllowDead("Tiax")
-//	!InParty("Tiax")
-//	!InMyArea("Tiax")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

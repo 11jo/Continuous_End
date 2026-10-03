@@ -1,13 +1,8 @@
 
 IF
 	Global("Continuous_RoT_Wulfg2","MYAREA",0)
-	OR(2)
-		BeenInParty("F_WULFGAR")
-		Exists("F_WULFGAR")
+	BeenInParty("F_WULFGAR")
 	!Dead("F_WULFGAR")
-//	!InPartyAllowDead("F_WULFGAR")
-//	!InParty("F_WULFGAR")
-//	!InMyArea("F_WULFGAR")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

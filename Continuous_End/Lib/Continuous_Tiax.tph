@@ -52,7 +52,6 @@ PRINT ~Installation of Continuous_Tiax...
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-	!Exists("Tiax")
 	!BeenInParty("Tiax")
 	!Dead("Tiax")
 	!InMyArea("Tiax")~
@@ -65,7 +64,7 @@ BUT_ONLY
 
 		COPY ~Continuous_End/Spl/Tiax_Memorised_Spell.SPL~			~override/JOTIAXCO.SPL~ // Add O#Tiax.cre spells just in case 
 
-	EXTEND_TOP ~AR1516.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Tiax.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR1516.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Tiax.baf~ EVALUATE_BUFFER
 
 END
 

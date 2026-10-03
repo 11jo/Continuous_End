@@ -1,13 +1,9 @@
 
 IF
+	Global("O#CoranSpawn","GLOBAL",0)	// Original block variable
 	Global("Continuous_BG2_Coran","MYAREA",0)
-	OR(2)
-		BeenInParty("Coran")
-		Exists("Coran")
+	BeenInParty("Coran")
 	!Dead("Coran")
-//	!InPartyAllowDead("Coran")
-//	!InParty("Coran")
-//	!InMyArea("Coran")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

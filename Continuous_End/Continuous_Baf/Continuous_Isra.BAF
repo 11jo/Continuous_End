@@ -2,13 +2,8 @@
 IF
 Global("rh#IsraExists","AR0709",0)	// Original block variable
 	Global("Continuous_BG2_Isra","MYAREA",0)
-	OR(2)
-		BeenInParty("rh#isra")
-		Exists("rh#isra")
+	BeenInParty("rh#isra")
 	!Dead("rh#isra")
-//	!InPartyAllowDead("rh#isra")
-//	!InParty("rh#isra")
-//	!InMyArea("rh#isra")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

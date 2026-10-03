@@ -1,15 +1,10 @@
 
 IF
 	Global("Continuous_BG2_Kivan","MYAREA",0)
-	OR(2)
-		BeenInParty("Kivan")
-		Exists("Kivan")
+	BeenInParty("Kivan")
 	!Dead("Kivan")
-//	!InPartyAllowDead("Kivan")
-//	!InParty("Kivan")
-//	!InMyArea("Kivan")
-Global("P#KIVANExists","Global",0)
-!Global("X#TalkedToKivan","GLOBAL",1)
+Global("P#KIVANExists","Global",0)	// Original block variable
+!Global("X#TalkedToKivan","GLOBAL",1)	// Original block variable
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

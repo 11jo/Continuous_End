@@ -2,13 +2,8 @@
 IF
 Global("LK#YeslickExists","GLOBAL",0) // Original block variable
 	Global("Continuous_BG2_Yeslick","MYAREA",0)
-	OR(2)
-		BeenInParty("Yeslick")
-		Exists("Yeslick")
+	BeenInParty("Yeslick")
 	!Dead("Yeslick")
-//	!InPartyAllowDead("Yeslick")
-//	!InParty("Yeslick")
-//	!InMyArea("Yeslick")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

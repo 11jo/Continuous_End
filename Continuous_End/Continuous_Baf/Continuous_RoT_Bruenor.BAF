@@ -1,13 +1,8 @@
 
 IF
 	Global("Continuous_RoT_Brue2","MYAREA",0)
-	OR(2)
-		BeenInParty("F_BRUENOR")
-		Exists("F_BRUENOR")
+	BeenInParty("F_BRUENOR")
 	!Dead("F_BRUENOR")
-//	!InPartyAllowDead("F_BRUENOR")
-//	!InParty("F_BRUENOR")
-//	!InMyArea("F_BRUENOR")
 THEN
 	RESPONSE #100
 		SetInterrupt(FALSE)

@@ -52,7 +52,6 @@ PRINT ~Installation of Continuous_Xan...
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~\0
-	!Exists("Xan")
 	!BeenInParty("Xan")
 	!Dead("Xan")
 	!InMyArea("Xan")~
@@ -65,7 +64,7 @@ BUT_ONLY
 
 		COPY ~Continuous_End/Spl/Xan_Memorised_Spell.SPL~			~override/JOXanCO.SPL~ // Add O#Xan09.cre spells just in case 
 
-	EXTEND_TOP ~AR1000.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Xan.baf~ EVALUATE_BUFFER
+	EXTEND_BOTTOM ~AR1000.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Xan.baf~ EVALUATE_BUFFER
 
 	EXTEND_TOP ~O#XAN25S.bcs~ ~Continuous_End/Continuous_Baf/Continuous_Xan_XP.baf~ EVALUATE_BUFFER
 /*
@@ -75,7 +74,6 @@ BUT_ONLY
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~
-	!Exists("Xan")
 	!BeenInParty("Xan")
 	!Dead("Xan")
 	!InMyArea("Xan")~
@@ -94,7 +92,6 @@ BUT_ONLY
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~
-	!Exists("Xan")
 	!BeenInParty("Xan")
 	!Dead("Xan")
 	!InMyArea("Xan")~
@@ -113,7 +110,6 @@ BUT_ONLY
 			COUNT_REGEXP_INSTANCES ~%textToReplace%~ num_matches
 			PATCH_IF (num_matches > 0) BEGIN
 				REPLACE_TEXTUALLY CASE_INSENSITIVE ~%textToReplace%~ ~
-	!Exists("Xan")
 	!BeenInParty("Xan")
 	!Dead("Xan")
 	!InMyArea("Xan")~
