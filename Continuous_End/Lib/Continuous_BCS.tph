@@ -195,7 +195,7 @@ ACTION_IF Continuous_Kivan = 1 AND (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~) AN
 	OUTER_SET Continuous_Kivan = 2
 END
 	// Region_of_Terror
-ACTION_IF Continuous_Region_of_Terror = 1 AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~11~) BEGIN
+ACTION_IF Continuous_Region_of_Terror = 1 AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~) AND NOT (MOD_IS_INSTALLED ~Continuous_End.tp2~ ~11~) BEGIN
 	OUTER_SET Continuous_Region_of_Terror = 2
 END
 
