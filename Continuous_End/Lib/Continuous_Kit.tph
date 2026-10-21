@@ -1,0 +1,133 @@
+
+// Swashbuckler kit for Alora
+ACTION_IF (Continuous_Kit = 1 OR Continuous_Alora_Kit = 1) AND (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~101~) BEGIN
+
+//	Regular BG1
+	ACTION_FOR_EACH creature IN ALORA BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+	
+			PRINT ~Alora Swashbuckler Exists~
+				COPY_EXISTING ~%creature%.cre~ ~override~
+						READ_SHORT 0x46 Alora_AC
+							WRITE_SHORT 0x46 Alora_AC - 1
+							WRITE_SHORT 0x48 Alora_AC - 1
+					WRITE_SHORT 0x244 0
+					WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~SWASHBUCKLER~)) // SWASHBUCKLER - 0x400C
+					LPF ADD_CRE_EFFECT
+						INT_VAR
+						opcode  = 73
+						target  = 2
+						parameter1   = 1
+						timing  = 9       // Instant/Permanent - 9
+						resist_dispel = 2
+					END
+					LPF ADD_CRE_EFFECT
+						INT_VAR
+						opcode  = 278
+						target  = 2
+						parameter1   = 1
+						timing  = 9       // Instant/Permanent - 9
+						resist_dispel = 2
+					END
+				BUT_ONLY
+	
+		END ELSE BEGIN
+	
+			PRINT ~Alora doesn't exists~
+	
+		END
+	END
+
+END
+
+// Alaghor of Clangeddin kit for Yeslick
+ACTION_IF (Continuous_Kit = 1 OR Continuous_Yeslick_Kit = 1) AND (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~109~) BEGIN
+
+//	Regular BG1
+	ACTION_FOR_EACH creature IN YESLIC YESLIC5 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+	
+			PRINT ~Yeslick Alaghor of Clangeddin Exists~
+				COPY_EXISTING ~%creature%.cre~ ~override~
+					WRITE_SHORT 0x244 0
+					WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~LK_ALAGHOR~)) // LK_ALAGHOR - 0x4048
+				BUT_ONLY
+	
+		END ELSE BEGIN
+	
+			PRINT ~Yeslick doesn't exists~
+	
+		END
+	END
+
+END
+
+// Feralan kit for Kivan
+ACTION_IF (Continuous_Kit = 1 OR Continuous_Kivan_Kit = 1) AND (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~) AND (MOD_IS_INSTALLED ~setup-ub.TP2~ ~23~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~110~) BEGIN
+
+//	Regular BG1
+	ACTION_FOR_EACH creature IN KIVAN KIVAN4 KIVAN6 BEGIN
+	
+		ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+	
+			PRINT ~Kivan Feralan Exists~
+				COPY_EXISTING ~%creature%.cre~ ~override~
+					READ_SHORT 0x46 Kivan_AC
+				PATCH_IF NOT (~%creature%~ STRING_EQUAL_CASE ~KIVAN6~) BEGIN
+						WRITE_SHORT 0x46 Kivan_AC - 1
+						WRITE_SHORT 0x48 Kivan_AC - 1
+				END ELSE BEGIN
+						WRITE_SHORT 0x46 Kivan_AC - 2
+						WRITE_SHORT 0x48 Kivan_AC - 2
+				END
+					READ_SHORT 0x68 Kivan_stealth
+						WRITE_SHORT 0x68 Kivan_stealth + 10
+					WRITE_SHORT 0x244 0
+					WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~FERALAN~))
+				BUT_ONLY
+	
+		END ELSE BEGIN
+	
+			PRINT ~Kivan doesn't exists~
+	
+		END
+	END
+
+END
+
+// Assassin kit for Entreri
+ACTION_IF (Continuous_Kit = 1 OR Continuous_RoT_Artemis_Kit = 1) AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~xxx~) BEGIN
+
+//	Regular BG1
+
+END
+
+// Swashbuckler kit for Jarlaxe
+ACTION_IF (Continuous_Kit = 1 OR Continuous_RoT_Jarlaxe_Kit = 1) AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~xxx~) BEGIN
+
+//	Regular BG1
+
+END
+
+//  Wizardslayer kit for Bruenor
+ACTION_IF (Continuous_Kit = 1 OR Continuous_RoT_Bruenor_Kit = 1) AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~xxx~) BEGIN
+
+//	Regular BG1
+
+END
+
+// Feralan kit for Catti-Brie
+ACTION_IF (Continuous_Kit = 1 OR Continuous_RoT_Catti_Kit = 1) AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~) AND (MOD_IS_INSTALLED ~setup-ub.TP2~ ~23~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~xxx~) BEGIN
+
+//	Regular BG1
+
+END
+
+//  Barbarian kit for Wulfgar
+ACTION_IF (Continuous_Kit = 1 OR Continuous_RoT_Wulfgar_Kit = 1) AND (MOD_IS_INSTALLED ~SETUP-ROT.TP2~ ~0~ AND FILE_EXISTS_IN_GAME ~F_JARLAX.cre~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) AND (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~xxx~) BEGIN
+
+//	Regular BG1
+
+END

@@ -1,7 +1,7 @@
 BACKUP ~weidu_external/Continuous_End/backup~
 // AUTHOR
 SUPPORT ~https://github.com/11jo/Continuous_End/issues~
-VERSION ~1.1~
+VERSION ~1.3~
 
 README ~Continuous_End/readme/Continuous_End.txt~
 
@@ -10,6 +10,8 @@ ASK_EVERY_COMPONENT
 ALWAYS
 
 	OUTER_SET Continuous_Alora = 0 // DESIGNATED 1
+
+		OUTER_SET Continuous_Alora_Kit = 0
 
 	OUTER_SET Continuous_Ajantis = 0 // DESIGNATED 2 
 
@@ -21,13 +23,27 @@ ALWAYS
 
 	OUTER_SET Continuous_Kivan = 0 // DESIGNATED 10
 
+		OUTER_SET Continuous_Kivan_Kit = 0
+
 	OUTER_SET Continuous_Region_of_Terror = 0 // DESIGNATED 11
+
+		OUTER_SET Continuous_RoT_Artemis_Kit = 0
+
+		OUTER_SET Continuous_RoT_Jarlaxe_Kit = 0
+
+		OUTER_SET Continuous_RoT_Bruenor_Kit = 0
+
+		OUTER_SET Continuous_RoT_Catti_Kit = 0
+
+		OUTER_SET Continuous_RoT_Wulfgar_Kit = 0
 
 	OUTER_SET Continuous_Tiax = 0 // DESIGNATED 8
 
 	OUTER_SET Continuous_Xan = 0 // DESIGNATED 3
 
 	OUTER_SET Continuous_Yeslick = 0 // DESIGNATED 9
+
+		OUTER_SET Continuous_Yeslick_Kit = 0
 
 END
 
@@ -86,6 +102,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 			INCLUDE ~Continuous_End/lib/Continuous_Yeslick.tph~
 
+/////////////////////////////////////////////////////////////////////////////
 
 BEGIN ~Continuous Alora for EET (Install after Alora BG2 mod)~
 DESIGNATED 1
@@ -103,6 +120,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Alora.tph~
 
+///////////
 
 BEGIN ~Continuous Ajantis for EET (Install after Ajantis BG2 mod)~
 DESIGNATED 2
@@ -120,6 +138,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Ajantis.tph~
 
+///////////
 
 BEGIN ~Continuous Xan for EET (Install after Xan BG2 mod)~
 DESIGNATED 3
@@ -137,6 +156,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Xan.tph~
 
+///////////
 
 BEGIN ~Continuous Coran for EET (Install after Coran BG2 mod)~
 DESIGNATED 4
@@ -154,6 +174,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Coran.tph~
 
+///////////
 
 BEGIN ~Continuous Branwen for EET (Install after Branwen BG2 mod)~
 DESIGNATED 5
@@ -171,6 +192,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Branwen.tph~
 
+///////////
 
 BEGIN ~Continuous Isra for EET (Install after Isra BG2 mod)~
 DESIGNATED 7
@@ -188,6 +210,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Isra.tph~
 
+///////////
 
 BEGIN ~Continuous Tiax for EET (Install after Tiax BG2 mod)~
 DESIGNATED 8
@@ -205,6 +228,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Tiax.tph~
 
+///////////
 
 BEGIN ~Continuous Kivan for EET (Install after Kivan BG2 mod)~
 DESIGNATED 10
@@ -222,6 +246,7 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Kivan.tph~
 
+///////////
 
 BEGIN ~Continuous Region of Terror for EET (Install after Kivan BG2 mod)~
 DESIGNATED 11
@@ -239,8 +264,40 @@ REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~EET_End.TP2~ ~0~ AND NOT MOD_IS_INSTALL
 
 		INCLUDE ~Continuous_End/lib/Continuous_Region_of_Terror.tph~
 
+/////////////////////////////////////////////////////////////////////////////
 
 // BG2 kits
+// Entreri Assassin
+// Jarlaxe Swashbuckler
+// Bruenor Wizardslayer
+// Catti-Brie Feralan
+// Wulfgar Barbarian
+
+BEGIN ~Continuous Kit for EET~
+DESIGNATED 100
+LABEL ~Continuous_Kit_for_EET~
+REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
+REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~) ~Continuous NPC for EET not installed~
+
+OUTER_SET Continuous_Alora_Kit = 1
+
+OUTER_SET Continuous_Kivan_Kit = 1
+
+OUTER_SET Continuous_RoT_Artemis_Kit = 1
+
+OUTER_SET Continuous_RoT_Jarlaxe_Kit = 1
+
+OUTER_SET Continuous_RoT_Bruenor_Kit = 1
+
+OUTER_SET Continuous_RoT_Catti_Kit = 1
+
+OUTER_SET Continuous_RoT_Wulfgar_Kit = 1
+
+OUTER_SET Continuous_Yeslick_Kit = 1
+
+		INCLUDE ~Continuous_End/lib/Continuous_Kit.tph~
+
+/////////////////////////////////////////////////////////////////////////////
 
 BEGIN ~Swashbuckler kit for Alora in BG1~
 DESIGNATED 101
@@ -248,50 +305,20 @@ LABEL ~Continuous_Alora_kit_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Alora.TP2~ ~0~ OR MOD_IS_INSTALLED ~Alora.TP2~ ~1~) ~Alora BG2 need to be installed~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~1~) ~Continuous Alora not installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) ~Continuous Kit for EET already installed.~
 
 // Add Swashbuckler / Bretteur kit to BG1 CRE
 
-//	Regular BG1
-ACTION_FOR_EACH creature IN ALORA BEGIN
+OUTER_SET Continuous_Alora_Kit = 1
 
-	ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+		INCLUDE ~Continuous_End/lib/Continuous_Kit.tph~
 
-		PRINT ~Alora Exists~
-			COPY_EXISTING ~%creature%.cre~ ~override~
-					READ_SHORT 0x46 Alora_AC
-						WRITE_SHORT 0x46 Alora_AC - 1
-						WRITE_SHORT 0x48 Alora_AC - 1
-				WRITE_SHORT 0x244 0
-				WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~SWASHBUCKLER~)) // SWASHBUCKLER - 0x400C
-				LPF ADD_CRE_EFFECT
-					INT_VAR
-					opcode  = 73
-					target  = 2
-					parameter1   = 1
-					timing  = 9       // Instant/Permanent - 9
-					resist_dispel = 2
-				END
-				LPF ADD_CRE_EFFECT
-					INT_VAR
-					opcode  = 278
-					target  = 2
-					parameter1   = 1
-					timing  = 9       // Instant/Permanent - 9
-					resist_dispel = 2
-				END
-			BUT_ONLY
-
-	END ELSE BEGIN
-
-		PRINT ~Alora doesn't exists~
-
-	END
-END
 /*
 – +1 bonus to Armor Class at 1st level, plus an additional +1 bonus every 5 levels.
 – +1 bonus to hit and damage rolls every 5 levels.
 */
 
+///////////
 
 BEGIN ~Alaghor of Clangeddin kit for Yeslick in BG1~
 DESIGNATED 109
@@ -299,27 +326,15 @@ LABEL ~Continuous_Yeslick_kit_for_EET~
 REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~YESLICKNPC.TP2~ ~1~)  ~Yeslick as Alaghor of Clangeddin need to be installed~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~9~) ~Continuous Yeslick not installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) ~Continuous Kit for EET already installed.~
 
 // Add Alaghor of Clangeddin kit to BG1 CRE
 
-//	Regular BG1
-ACTION_FOR_EACH creature IN YESLIC YESLIC5 BEGIN
+OUTER_SET Continuous_Yeslick_Kit = 1
 
-	ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+		INCLUDE ~Continuous_End/lib/Continuous_Kit.tph~
 
-		PRINT ~Yeslick Exists~
-			COPY_EXISTING ~%creature%.cre~ ~override~
-				WRITE_SHORT 0x244 0
-				WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~LK_ALAGHOR~)) // LK_ALAGHOR - 0x4048
-			BUT_ONLY
-
-	END ELSE BEGIN
-
-		PRINT ~Yeslick doesn't exists~
-
-	END
-END
-
+///////////
 
 BEGIN ~Feralan kit for Kivan in BG1~
 DESIGNATED 110
@@ -328,36 +343,14 @@ REQUIRE_PREDICATE GAME_IS ~eet~ ~EET need to be installed.~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~SETUP-KIVAN.TP2~ ~100~)  ~Kivan BG2 need to be installed~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~Continuous_End.TP2~ ~0~ OR MOD_IS_INSTALLED ~Continuous_End.TP2~ ~10~) ~Continuous Kivan not installed~
 REQUIRE_PREDICATE (MOD_IS_INSTALLED ~setup-ub.TP2~ ~23~) ~Feralan from Unfinished Buisness mod not installed~
+REQUIRE_PREDICATE (NOT MOD_IS_INSTALLED ~Continuous_End.TP2~ ~100~) ~Continuous Kit for EET already installed.~
 
 // Add Feralan / Sanguinaire kit to BG1 CRE
 
-//	Regular BG1
-ACTION_FOR_EACH creature IN KIVAN KIVAN4 KIVAN6 BEGIN
+OUTER_SET Continuous_Kivan_Kit = 1
 
-	ACTION_IF FILE_EXISTS_IN_GAME ~%creature%.cre~ THEN BEGIN
+		INCLUDE ~Continuous_End/lib/Continuous_Kit.tph~
 
-		PRINT ~Kivan Exists~
-			COPY_EXISTING ~%creature%.cre~ ~override~
-				READ_SHORT 0x46 Kivan_AC
-			PATCH_IF NOT (~%creature%~ STRING_EQUAL_CASE ~KIVAN6~) BEGIN
-					WRITE_SHORT 0x46 Kivan_AC - 1
-					WRITE_SHORT 0x48 Kivan_AC - 1
-			END ELSE BEGIN
-					WRITE_SHORT 0x46 Kivan_AC - 2
-					WRITE_SHORT 0x48 Kivan_AC - 2
-			END
-				READ_SHORT 0x68 Kivan_stealth
-					WRITE_SHORT 0x68 Kivan_stealth + 10
-				WRITE_SHORT 0x244 0
-				WRITE_SHORT 0x246 (IDS_OF_SYMBOL (~kit~ ~FERALAN~))
-			BUT_ONLY
-
-	END ELSE BEGIN
-
-		PRINT ~Kivan doesn't exists~
-
-	END
-END
 /*
 -  +10% to Stealth ability
 -  Gains +1 AC at first level, and a further bonus of +1 AC per 5 levels

@@ -17,16 +17,17 @@
 **Author** : ****
 
 
-## Overwiew :  
+## Overwiew :
 ----------------
 
-This mod will apply changes in game, in order to make several NPCs continuous without having to make any modifications to the original mods. 
+This mod will apply changes in game, in order to make several NPCs continuous without having to make any modifications to the original mods.
 
-https://github.com/orgs/The-Gate-Project/discussions/10l
 
-Mod included : Alora bg2, Ajantis bg2, Branwen bg2, Coran bg2, Isra bg2, Kivan bg2, Tiax bg2, Xan bg2, Yeslick bg2.
+Mod included : Alora bg2, Ajantis bg2, Branwen bg2, Coran bg2, Isra bg2, Kivan bg2, Region of Terror NPCs, Tiax bg2, Xan bg2, Yeslick bg2.
 
-## Instruction :  
+[Potential Mod list](https://github.com/11jo/Continuous_End/blob/main/Continuous_End/NPC_BG1_BG2.txt)
+
+## Instruction :
 ----------------
 
 The mod need to be installed :
@@ -39,37 +40,54 @@ The best install order is right before EET_End.
 
 
 
-## Components : 
+## Components :
 ----------------
 
 - Main Component : Make all npcs below continuous, if their mods are already installed.
 
 	- Alora bg2 Component : Install only Continuous Alora.
-	
+
 	- Ajantis bg2 Component : Install only Continuous Ajantis.
-	
+
 	- Branwen bg2 Component : Install only Continuous Branwen.
-	
+
 	- Coran bg2 Component : Install only Continuous Coran.
-	
+
 	- Isra bg2 Component : Install only Continuous Isra.
-	
+
 	- Kivan bg2 Component : Install only Continuous Kivan.
-	
+
+	- Region of Terror bg2 Component : Install only Continuous Region of Terror NPCs.
+
 	- Tiax bg2 Component : Install only Continuous Tiax.
-	
+
 	- Xan bg2 Component : Install only Continuous Xan.
-	
+
 	- Yeslick bg2 Component : Install only Continuous Yeslick.
+
+- Continuous Kit for EET : Enable the kit planned for the BG2 creature in BG1 (If any)
+
+	- Swashbuckler kit for Alora.
+
+	- Feralan kit for Kivan in BG1 (**Unfinished Buisness component 23 need to be installed**).
+
+	- Region of Terror bg2 Component : Install only Continuous Region of Terror NPCs.
+		- Artemis Entreri : Assassin
+		- Jarlaxe : Swashbuckler
+		- Bruenor :  Wizardslayer
+		- Catti-Brie : Feralan (**Unfinished Buisness component 23 need to be installed**)
+		- Wulfgar : Barbarian
+
+	- Alaghor of Clangeddin kit for Yeslick.
 
 
 
 ## Installation / Uninstallation :
 ---------------------------------
 
-Extract archive contents into your game directory  
-Run Setup-Continuous_End.exe  
-Follow the prompt  
+Extract archive contents into your game directory
+Run Setup-Continuous_End.exe
+Follow the prompt
 
 
 ## Credits / Remerciements :
@@ -78,7 +96,7 @@ Follow the prompt
 ## Version History :
 --------------------
 
-v1.0 : 
+v1.0 :
 - Alora bg2
 - Ajantis bg2
 - Branwen bg2
@@ -91,3 +109,10 @@ v1.0 :
 
 v1.1 :
 - First release
+
+v1.2 :
+- Remove Walahnan
+
+v1.3 :
+- Region of Terror / Drizzt Saga npcs
+- BG2 NPC Kit for BG1 NPC
